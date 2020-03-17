@@ -7,7 +7,7 @@ define("HIDE_SIDEBAR", true);
 
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 
-$APPLICATION->SetTitle("Страница не найдена");?>
+$APPLICATION->SetTitle("404 ошибка: Страница не найдена");?>
 	<div class="bx-404-container">
 		<div class="bx-404-block"><img src="<?=SITE_DIR?>images/404.png" alt=""></div>
 		<div class="bx-404-text-block">К сожалению, такая страница не найдена. <br>Данная страница была удалена с сайта, либо ее никогда не существовало.</div>
