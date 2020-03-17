@@ -30,7 +30,9 @@ IncludeTemplateLangFile(__FILE__);
 			Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery.ui.selectmenu/jquery.ui.position.js");
 			Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery.ui.selectmenu/jquery.ui.selectmenu.js");
 		?>
-
+		<!--[if lt IE 9]>
+			<script src="<?=SITE_TEMPLATE_PATH?>/js/html5shiv.js"></script>
+		<![endif]-->
 			</head>
 	<body>
 		<? $APPLICATION->ShowPanel(); ?>
