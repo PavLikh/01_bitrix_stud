@@ -1,5 +1,5 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
-IncludeTemplateLangFile(__FILE__);
+//IncludeTemplateLangFile(__FILE__);
 ?><!DOCTYPE html>
 <!--[if IE 7]>    <html class="ie7"> <![endif]-->
 <!--[if IE 8]>    <html class="ie8> <![endif]-->
@@ -15,7 +15,7 @@ IncludeTemplateLangFile(__FILE__);
 
 		<?
 			Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/base.css"); 
-			Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/assets/js/bxslider/jquery.bxslider.css");
+			Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/js/bxslider/jquery.bxslider.css");
 			Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery-1.9.1.min.js");
 			Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery.placeholder.js");
 			Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/bxslider/jquery.bxslider.js");

@@ -7,7 +7,7 @@
 /*news*/
 .news_block
 {
-	background: url("../images/dark_bg.png") 0 0 repeat;
+	background: url("images/dark_bg.png") 0 0 repeat;
 	overflow: hidden;
 	padding: 14px 22px;
 }
