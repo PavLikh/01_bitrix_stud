@@ -26,14 +26,16 @@ $aMenuLinks = Array(
 		"/company/finances/", 
 		Array(), 
 		Array(), 
-		"CSite::InGroup(array(1,3,6,4,7,5,8))" 
+		//"CSite::InGroup(array(1,3,6,4,7,5,8))"
+		"\$USER->IsAuthorized()"
+		
 	),
 	Array(
 		"Для клиентов", 
 		"/company/clients/", 
 		Array(), 
 		Array(), 
-		"" 
-	)
+		""
+	),
 );
 ?>

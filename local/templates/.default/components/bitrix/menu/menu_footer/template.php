@@ -9,11 +9,10 @@
 		if($arParams["MAX_LEVEL"] == 1 && $arItem["DEPTH_LEVEL"] > 1) 
 			continue;
 	?>
-		<?if($arItem["SELECTED"]):?>
-			<li><a href="<?=$arItem["LINK"]?>" class="selected"><?=$arItem["TEXT"]?></a></li>
-		<?else:?>
-			<li><a href="<?=$arItem["LINK"]?>" style="color: <?= isset($arItem['PARAMS']['color']) ? 'green' : '' ?>"><?=$arItem["TEXT"]?></a></li>
-		<?endif?>
+
+		<li><a href="<?=$arItem["LINK"]?>" <?=$arItem["SELECTED"] ? 'class="selected"' : 'style="color: ' . $arItem['PARAMS']['color'] . '"'?>><?=$arItem["TEXT"]?></a></li>
+
+
 		
 	<?endforeach?>
 

@@ -38,15 +38,16 @@
 				<section class="info_block left_block_shadow">
 					<!-- <h2>Информация</h2> -->
 					<h2><?=\Bitrix\Main\Localization\Loc::getMessage('INFORMATION')?></h2>
+					<!--<h2><?//=Loc::getMessage('INFORMATION')?></h2>-->
 					<nav class="menu_footer grey">
-						<ul>
-<!-- 							<li><a href="#">О компании</a></li>
+<!--					<ul>
+ 							<li><a href="#">О компании</a></li>
 							<li><a href="#" class="selected">Контактная информация</a></li>
 							<li><a href="#">Условия продаж</a></li>
 							<li><a href="#">Финансовый отдел</a></li>
 							<li><a href="#">Для клиентов</a></li>
 						</ul> -->
-						<?$APPLICATION->IncludeComponent(
+ 					<?$APPLICATION->IncludeComponent(
 							"bitrix:menu",
 							"menu_footer",
 							Array(
