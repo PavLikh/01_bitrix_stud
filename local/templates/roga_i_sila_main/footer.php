@@ -1,4 +1,9 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();?>
+
+<?// IncludeTemplateLangFile(__FILE__); ?>
+<? \Bitrix\Main\Localization\Loc::loadMessages(__FILE__);?>
+
+
 				</div>
 			</section>
 			<div class="d_footer width_960"></div>
@@ -31,15 +36,32 @@
 					</div>
 				</section>
 				<section class="info_block left_block_shadow">
-					<h2>Информация</h2>
+					<!-- <h2>Информация</h2> -->
+					<h2><?=\Bitrix\Main\Localization\Loc::getMessage('INFORMATION')?></h2>
 					<nav class="menu_footer grey">
 						<ul>
-							<li><a href="#">О компании</a></li>
+<!-- 							<li><a href="#">О компании</a></li>
 							<li><a href="#" class="selected">Контактная информация</a></li>
 							<li><a href="#">Условия продаж</a></li>
 							<li><a href="#">Финансовый отдел</a></li>
 							<li><a href="#">Для клиентов</a></li>
-						</ul>
+						</ul> -->
+						<?$APPLICATION->IncludeComponent(
+							"bitrix:menu",
+							"menu_footer",
+							Array(
+								"ALLOW_MULTI_SELECT" => "N",
+								"CHILD_MENU_TYPE" => "left",
+								"DELAY" => "N",
+								"MAX_LEVEL" => "1",
+								"MENU_CACHE_GET_VARS" => array(""),
+								"MENU_CACHE_TIME" => "3600",
+								"MENU_CACHE_TYPE" => "A",
+								"MENU_CACHE_USE_GROUPS" => "Y",
+								"ROOT_MENU_TYPE" => "bottom",
+								"USE_EXT" => "N"
+							)
+						);?>
 					</nav>
 				</section>
 			</section>
