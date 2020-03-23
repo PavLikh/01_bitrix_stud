@@ -1,4 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
+
+define("NO_IMAGE_PATH", "/local/templates/roga_i_sila_main/images/no-image.jpg");
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
@@ -14,21 +16,16 @@ $this->setFrameMode(true);
 ?>
 
 <section class="news_block inverse">
-	<h2 class="inline-block">Новости</h2><span class="all_list">&nbsp;/&nbsp;<a href="<?=SITE_DIR . 'company/news/'?>" class="text_decor_none"><b>Все</b></a></span>
+	<h2 class="inline-block"><?=\Bitrix\Main\Localization\Loc::getMessage('NEWS_TITLE')?></h2><span class="all_list">&nbsp;/&nbsp;<a href="<?=$arResult['LIST_PAGE_URL']?>" class="text_decor_none"><b><?=\Bitrix\Main\Localization\Loc::getMessage('ALL_LINK')?></b></a></span>
 	<div>
 
-	<?if($arParams["DISPLAY_TOP_PAGER"]):?>
-		<?=$arResult["NAV_STRING"]?><br />
-	<?endif;?>
+
 			<?foreach($arResult["ITEMS"] as $arItem):?>
-		<?
-		$this->AddEditAction($arItem['ID'], $arItem['EDIT_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_EDIT"));
-		$this->AddDeleteAction($arItem['ID'], $arItem['DELETE_LINK'], CIBlock::GetArrayByID($arItem["IBLOCK_ID"], "ELEMENT_DELETE"), array("CONFIRM" => GetMessage('CT_BNL_ELEMENT_DELETE_CONFIRM')));
-		?>
+
 			<figure class="news_item">
 				<a href="<?=$arItem["DETAIL_PAGE_URL"]?>"><img
 					border="0"
-					src="<?=$arItem["PREVIEW_PICTURE"]["SRC"]?>"
+					src="<?=$arItem["PREVIEW_PICTURE"]["SRC"] ?? NO_IMAGE_PATH ?>"
 					width="<?//=$arItem["PREVIEW_PICTURE"]["WIDTH"]?>"
 					height="<?//=$arItem["PREVIEW_PICTURE"]["HEIGHT"]?>"
 					alt="<?=$arItem["PREVIEW_PICTURE"]["ALT"]?>"
@@ -37,11 +34,12 @@ $this->setFrameMode(true);
 					/>
 				</a>
 				<figcaption class="news_item_description">
-					<h3><a href="#"><?echo $arItem["NAME"]?></a></h3>
+					<h3><a href="<?=$arItem["DETAIL_PAGE_URL"]?>"><?echo $arItem["NAME"]?></a></h3>
 					<div class="news_item_anons">
-						<a href="#" class="text_decor_none">
+						<a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="text_decor_none">
 							<?=$arItem["PREVIEW_TEXT"]?>
 							Парадигма просветляет архетип, таким образом, стратегия поведения, выгодная отдельному человеку
+
 						</a>
 					</div>
 					<div class="news_item_date grey"><?echo $arItem["DISPLAY_ACTIVE_FROM"]?></div>

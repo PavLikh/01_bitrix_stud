@@ -2,6 +2,7 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Рога и Сила - главная страница");
 ?>
+
 	<div class="slider">
 		<ul class="bxslider">
 			<li>
@@ -142,7 +143,7 @@ $APPLICATION->SetTitle("Рога и Сила - главная страница")
 		"SET_META_DESCRIPTION" => "Y",
 		"SET_META_KEYWORDS" => "Y",
 		"SET_STATUS_404" => "N",
-		"SET_TITLE" => "Y",
+		"SET_TITLE" => "N",
 		"SHOW_404" => "N",
 		"SORT_BY1" => "ACTIVE_FROM",
 		"SORT_BY2" => "SORT",
