@@ -48,6 +48,24 @@
 						<a href="#" class="register">Регистрация</a>
 						<a href="#" class="auth">Авторизация</a>
 					</nav>
+
+					<?$APPLICATION->IncludeComponent(
+	"bitrix:system.auth.form", 
+	"auth_form_header", 
+	array(
+		"FORGOT_PASSWORD_URL" => "",
+		"PROFILE_URL" => "/personal/",
+		"REGISTER_URL" => "/auth/",
+		"SHOW_ERRORS" => "N",
+		"COMPONENT_TEMPLATE" => "auth_form_header"
+	),
+	false
+);?>
+
+
+
+
+
 					<div class="basket_block">
 						<a href="#" class="basket_product_count inline-block">0</a>
 						<a href="#" class="order_button pie">Оформить заказ</a>
