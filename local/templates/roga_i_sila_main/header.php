@@ -11,27 +11,27 @@
 		<title><? $APPLICATION->ShowTitle(); ?></title>
 		<? use Bitrix\Main\Page\Asset; ?>
 
-		<link href="<?=SITE_TEMPLATE_PATH?>/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+		<link href="<?=DEFAULT_TEMPLATE_PATH?>/favicon.ico" rel="shortcut icon" type="image/x-icon" />
 
 		<?
-			Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/css/base.css"); 
-			Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/js/bxslider/jquery.bxslider.css");
-			Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery-1.9.1.min.js");
-			Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery.placeholder.js");
-			Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/bxslider/jquery.bxslider.js");
-			Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/default_script.js"); 
+			Asset::getInstance()->addCss(DEFAULT_TEMPLATE_PATH . "/css/base.css"); 
+			Asset::getInstance()->addCss(DEFAULT_TEMPLATE_PATH . "/js/bxslider/jquery.bxslider.css");
+			Asset::getInstance()->addJs(DEFAULT_TEMPLATE_PATH . "/js/jquery-1.9.1.min.js");
+			Asset::getInstance()->addJs(DEFAULT_TEMPLATE_PATH . "/js/jquery.placeholder.js");
+			Asset::getInstance()->addJs(DEFAULT_TEMPLATE_PATH . "/js/bxslider/jquery.bxslider.js");
+			Asset::getInstance()->addJs(DEFAULT_TEMPLATE_PATH . "/js/default_script.js"); 
 
-			Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/js/jquery.ui.selectmenu/jquery.ui.core.css"); 
-			Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/js/jquery.ui.selectmenu/jquery.ui.theme.css");
-			Asset::getInstance()->addCss(SITE_TEMPLATE_PATH . "/js/jquery.ui.selectmenu/jquery.ui.selectmenu.css");
+			Asset::getInstance()->addCss(DEFAULT_TEMPLATE_PATH . "/js/jquery.ui.selectmenu/jquery.ui.core.css"); 
+			Asset::getInstance()->addCss(DEFAULT_TEMPLATE_PATH . "/js/jquery.ui.selectmenu/jquery.ui.theme.css");
+			Asset::getInstance()->addCss(DEFAULT_TEMPLATE_PATH . "/js/jquery.ui.selectmenu/jquery.ui.selectmenu.css");
 
-			Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery.ui.selectmenu/jquery.ui.core.js");
-			Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery.ui.selectmenu/jquery.ui.widget.js");
-			Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery.ui.selectmenu/jquery.ui.position.js");
-			Asset::getInstance()->addJs(SITE_TEMPLATE_PATH . "/js/jquery.ui.selectmenu/jquery.ui.selectmenu.js");
+			Asset::getInstance()->addJs(DEFAULT_TEMPLATE_PATH . "/js/jquery.ui.selectmenu/jquery.ui.core.js");
+			Asset::getInstance()->addJs(DEFAULT_TEMPLATE_PATH . "/js/jquery.ui.selectmenu/jquery.ui.widget.js");
+			Asset::getInstance()->addJs(DEFAULT_TEMPLATE_PATH . "/js/jquery.ui.selectmenu/jquery.ui.position.js");
+			Asset::getInstance()->addJs(DEFAULT_TEMPLATE_PATH . "/js/jquery.ui.selectmenu/jquery.ui.selectmenu.js");
 		?>
 		<!--[if lt IE 9]>
-			<script src="<?=SITE_TEMPLATE_PATH?>/js/html5shiv.js"></script>
+			<script src="<?=DEFAULT_TEMPLATE_PATH?>/js/html5shiv.js"></script>
 		<![endif]-->
 			</head>
 	<body>
@@ -41,7 +41,8 @@
 			<header class="header">
 				<div class="width_960">
 					<div class="item-logo">
-						<span class="logo inline-block"></span>
+						<!-- <span class="logo inline-block"></span> -->
+						<a href="/" class="logo inline-block"></a>
 					</div>
 					<nav class="top_menu grey inline-block">
 						<a href="#" class="register">Регистрация</a>
@@ -90,6 +91,5 @@
 					</nav>
 				</div>
 			</section>
-
 			<section class="content">
 				<div class="work_area width_960">

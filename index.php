@@ -2,12 +2,13 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Рога и Сила - главная страница");
 ?>
-
+<?=$_SERVER["DOCUMENT_ROOT"];?>
+<? $APPLICATION->ShowTitle(); ?>
 	<div class="slider">
 		<ul class="bxslider">
 			<li>
 				<div class="banner">
-					<img src="<?=SITE_TEMPLATE_PATH?>/images/test_slider_1.png" alt="" title="" />
+					<img src="<?=DEFAULT_TEMPLATE_PATH?>/images/test_slider_1.png" alt="" title="" />
 					<div class="banner_content">
 						<h1>Купи Роллс Ройс, получи Отчество к&nbsp;своему имени</h1>
 						<h2>Аподейктика индуктивно подчеркивает катарсис, однако Зигварт считал критерием истинности необходимость и&nbsp;общезначимость, для&nbsp;которых нет никакой опоры в&nbsp;объективном мире <a href="#1" class="detail_link">подробнее</a></h2>
@@ -16,7 +17,7 @@ $APPLICATION->SetTitle("Рога и Сила - главная страница")
 			</li>
 			<li>
 				<div class="banner">
-					<img src="<?=SITE_TEMPLATE_PATH?>/images/test_slider_2.png" alt="" title="" />
+					<img src="<?=DEFAULT_TEMPLATE_PATH?>/images/test_slider_2.png" alt="" title="" />
 					<div class="banner_content">
 						<h1>Купи Астон Мартин, получи секретное Задание</h1>
 						<h2>Аподейктика индуктивно подчеркивает катарсис, однако Зигварт считал критерием истинности необходимость и общезначимость, для которых нет никакой опоры в объективном мире <a href="#2" class="detail_link">подробнее</a></h2>
@@ -25,7 +26,7 @@ $APPLICATION->SetTitle("Рога и Сила - главная страница")
 			</li>
 			<li>
 				<div class="banner">
-					<img src="<?=SITE_TEMPLATE_PATH?>/images/test_slider_3.png" alt="" title="" />
+					<img src="<?=DEFAULT_TEMPLATE_PATH?>/images/test_slider_3.png" alt="" title="" />
 					<div class="banner_content">
 						<h1>Купи Бентли, получи бейсболку</h1>
 						<h2>Аподейктика индуктивно подчеркивает катарсис, однако Зигварт считал критерием истинности необходимость и общезначимость, для которых нет никакой опоры в объективном мире <a href="#3" class="detail_link">подробнее</a></h2>
@@ -39,7 +40,7 @@ $APPLICATION->SetTitle("Рога и Сила - главная страница")
 		<figure class="product_item">
 			<div class="product_item_pict">
 				<a href="#">
-					<img src="<?=SITE_TEMPLATE_PATH?>/images/test_top_week_1.png" alt="BMW X3 2.0d" title="BMW X3 2.0d"/>
+					<img src="<?=DEFAULT_TEMPLATE_PATH?>/images/test_top_week_1.png" alt="BMW X3 2.0d" title="BMW X3 2.0d"/>
 				</a>
 			</div>
 			<figcaption>
@@ -53,7 +54,7 @@ $APPLICATION->SetTitle("Рога и Сила - главная страница")
 			<div class="product_item_label new"></div>
 			<div class="product_item_pict">
 				<a href="#">
-					<img src="<?=SITE_TEMPLATE_PATH?>/images/test_top_week_2.png" alt="AUDI A6 3.0 TFSI" title="AUDI A6 3.0 TFSI"/>
+					<img src="<?=DEFAULT_TEMPLATE_PATH?>/images/test_top_week_2.png" alt="AUDI A6 3.0 TFSI" title="AUDI A6 3.0 TFSI"/>
 				</a>
 			</div>
 			<figcaption>
@@ -66,7 +67,7 @@ $APPLICATION->SetTitle("Рога и Сила - главная страница")
 			<div class="product_item_label sale"></div>
 			<div class="product_item_pict">
 				<a href="#">
-					<img src="<?=SITE_TEMPLATE_PATH?>/images/test_top_week_3.png" alt="Mercedes-Benz A200" title="Mercedes-Benz A200"/>
+					<img src="<?=DEFAULT_TEMPLATE_PATH?>/images/test_top_week_3.png" alt="Mercedes-Benz A200" title="Mercedes-Benz A200"/>
 				</a>
 			</div>
 			<figcaption>
@@ -78,7 +79,7 @@ $APPLICATION->SetTitle("Рога и Сила - главная страница")
 		<figure class="product_item">
 			<div class="product_item_pict">
 				<a href="#">
-					<img src="<?=SITE_TEMPLATE_PATH?>/images/no-image.jpg" alt="BMW Z4 sDrive35i" title="BMW Z4 sDrive35i"/>
+					<img src="<?=DEFAULT_TEMPLATE_PATH?>/images/no-image.jpg" alt="BMW Z4 sDrive35i" title="BMW Z4 sDrive35i"/>
 				</a>
 			</div>
 			<figcaption>
@@ -138,7 +139,7 @@ $APPLICATION->SetTitle("Рога и Сила - главная страница")
 			0 => "",
 			1 => "",
 		),
-		"SET_BROWSER_TITLE" => "Y",
+		"SET_BROWSER_TITLE" => "N",
 		"SET_LAST_MODIFIED" => "N",
 		"SET_META_DESCRIPTION" => "Y",
 		"SET_META_KEYWORDS" => "Y",

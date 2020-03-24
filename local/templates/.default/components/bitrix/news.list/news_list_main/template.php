@@ -1,6 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
-define("NO_IMAGE_PATH", "/local/templates/roga_i_sila_main/images/no-image.jpg");
+define("NO_IMAGE_PATH", "/local/templates/.default/images/no-image.jpg");
 /** @var array $arParams */
 /** @var array $arResult */
 /** @global CMain $APPLICATION */
