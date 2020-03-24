@@ -83,7 +83,7 @@ img {
 	color: #fff;
 }
 .pie{
-	behavior: url(../PIE.htc);
+	behavior: url(PIE.htc);
 }
 h1,h2,h3,h4,h5{
 	font-family: "PTSans_Bold";
