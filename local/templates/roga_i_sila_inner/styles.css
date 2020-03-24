@@ -138,13 +138,13 @@ ul{
 	ul li{
 		padding-left: 16px;
 		padding-bottom: 5px;
-		background: url("/images/li_bullit.png") 0 0.428em no-repeat;
+		background: url("../.default/images/li_bullit.png") 0 0.428em no-repeat;
 	}
 	ul ul{
 		margin: 5px 0 -3px 9px;
 	}
 		ul ul li{
-			background-image: url("/images/li_sub_bullit.png");
+			background-image: url("../.default/images/li_sub_bullit.png");
 		}
 	.content_ul{
 		margin-right: 20px;

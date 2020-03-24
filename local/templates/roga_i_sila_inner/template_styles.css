@@ -85,7 +85,7 @@ hr.bottom_line{
 			padding: 0;
 		}
 		.page_nav .prev, .page_nav .next{
-			background: url("../images/sprite.png") no-repeat;
+			background: url("../.default/images/sprite.png") no-repeat;
 			width: 9px;
 			height: 15px;
 			padding: 0;
@@ -152,7 +152,7 @@ hr.bottom_line{
 	.left_menu ul a, .left_menu ul span {
 		display: block;
 		padding: 2px 10px;
-		behavior: url(../../PIE.php);
+		behavior: url(PIE.php);
 	}
 	/*.left_menu ul a:hover, */.left_menu  ul span{
 		color: #fff;
