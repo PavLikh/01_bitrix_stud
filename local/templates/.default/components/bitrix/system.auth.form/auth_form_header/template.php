@@ -14,7 +14,7 @@ CJSCore::Init();
 // echo '<br>$arParams["USER_PROFILE_LINK"]:  ';
 // echo $arParams['USER_PROFILE_LINK'];
 // echo '<br>';
-// var_dump($arParams);
+//var_dump($arParams);
 ?>
 <!-- 					<nav class="top_menu grey inline-block">
 						<a href="<?=$arParams["REGISTER_URL"];?>?register=yes" class="register">Регистрация</a>
@@ -29,8 +29,9 @@ if ($arResult['SHOW_ERRORS'] == 'Y' && $arResult['ERROR'])
 
 <?if($arResult["FORM_TYPE"] == "login"):?>
 	<nav class="top_menu grey inline-block">
-		<a href="<?=$arParams["REGISTER_URL"];?>?register=yes" class="register">Регистрация</a>
-		<a href="<?=$arParams["REGISTER_URL"];?>" class="auth">Авторизация</a>
+		<!-- <a href="<?=$arParams["REGISTER_URL"];?>?register=yes" class="register"><?=\Bitrix\Main\Localization\Loc::getMessage('AUTH_REGISTER')?></a> -->
+		<a href="<?=$arResult["AUTH_REGISTER_URL"];?>" class="register"><?=\Bitrix\Main\Localization\Loc::getMessage('AUTH_REGISTER')?></a>
+		<a href="<?=$arParams["REGISTER_URL"];?>" class="auth"><?=\Bitrix\Main\Localization\Loc::getMessage('auth_form_comp_auth')?></a>
 	</nav>
 
 
@@ -44,21 +45,20 @@ else:
 <!-- 	<table width="95%"> -->
 <!-- 		<tr>
 			<td align="center"> -->
-		<nav align="center" class="top_menu grey inline-block">
 
-			<p><?=GetMessage("AUTH_USER_HELLO")?><a style="font-weight: bold; color: #000;" href="<?=$arParams['USER_PROFILE_LINK'];?>" title="<?=GetMessage("AUTH_PROFILE")?>"  class=""><?=$arResult["USER_NAME"]?></a></p>
-
-
-				<a href="<?=$arParams["PROFILE_URL"]?>" title="<?=GetMessage("AUTH_PROFILE")?>"><?=GetMessage("AUTH_PROFILE")?></a>
-
-				<a href="<?echo $APPLICATION->GetCurPageParam("logout=yes", array(
+					<nav class="top_menu grey inline-block authorize">
+						<span><?=GetMessage("AUTH_USER_HELLO")?></span>
+						<a href="<?=$arParams['USER_PROFILE_LINK'];?>"><b class="user_name"><?=$arResult["USER_NAME"]?></b></a>
+						<a href="<?=$arParams["PROFILE_URL"]?>"><?=GetMessage("AUTH_PROFILE")?></a>
+						<a class="logout" href="<?echo $APPLICATION->GetCurPageParam("logout=yes", array(
 				     "login",
 				     "logout",
 				     "register",
 				     "forgot_password",
-				     "change_password"));?>"><?=GetMessage("AUTH_LOGOUT_BUTTON")?></a>
-				
-</nav> 
+				     "change_password"));?>"><?=\Bitrix\Main\Localization\Loc::getMessage("AUTH_LOGOUT_BUTTON")?></a>
+					</nav>
+
+
 
 <!-- 
 			</td>
