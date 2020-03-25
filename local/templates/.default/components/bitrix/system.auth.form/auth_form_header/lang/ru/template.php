@@ -6,7 +6,7 @@ $MESS["AUTH_REMEMBER_ME"] = "Запомнить меня на этом комп�
 $MESS["AUTH_FORGOT_PASSWORD_2"] = "Забыли свой пароль?";
 $MESS["AUTH_REGISTER"] = "Регистрация";
 $MESS["AUTH_LOGOUT_BUTTON"] = "Выйти";
-$MESS["AUTH_PROFILE"] = "Мой профиль";
+$MESS["AUTH_PROFILE"] = "Личный кабинет";
 $MESS["AUTH_A_INTERNAL"] = "Встроенная авторизация";
 $MESS["AUTH_A_OPENID"] = "OpenID";
 $MESS["AUTH_OPENID"] = "OpenID";
@@ -21,4 +21,5 @@ $MESS["auth_form_comp_otp"] = "Одноразовый пароль:";
 $MESS["auth_form_comp_otp_remember_title"] = "Запомнить код на этом компьютере";
 $MESS["auth_form_comp_otp_remember"] = "Запомнить код";
 $MESS["auth_form_comp_auth"] = "Авторизация";
+$MESS["AUTH_USER_HELLO"] = "Здравствуйте, ";
 ?>

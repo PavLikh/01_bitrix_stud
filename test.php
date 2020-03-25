@@ -16,14 +16,15 @@ $APPLICATION->SetTitle("Тестовая");
 		"ROOT_MENU_TYPE" => "bottom",
 		"USE_EXT" => "N"
 	)
-);?><?$APPLICATION->IncludeComponent(
-	"bitrix:system.auth.form",
-	"",
-	Array(
-		"FORGOT_PASSWORD_URL" => "/test_user/",
+);?><?$APPLICATION->IncludeComponent("bitrix:system.auth.form", "", array(
+	"FORGOT_PASSWORD_URL" => "/test_user/",
 		"PROFILE_URL" => "/test_user/profil-test.php",
 		"REGISTER_URL" => "/test_user/registratsiya-test.php",
 		"SHOW_ERRORS" => "N"
+	),
+	false,
+	array(
+	"ACTIVE_COMPONENT" => "N"
 	)
 );?><?$APPLICATION->IncludeComponent(
 	"bitrix:system.auth.form", 

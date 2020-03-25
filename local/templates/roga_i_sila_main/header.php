@@ -44,12 +44,13 @@
 						<!-- <span class="logo inline-block"></span> -->
 						<a href="/" class="logo inline-block"></a>
 					</div>
-					<nav class="top_menu grey inline-block">
+<!-- 					<nav class="top_menu grey inline-block">
 						<a href="#" class="register">Регистрация</a>
 						<a href="#" class="auth">Авторизация</a>
-					</nav>
+					</nav> -->
 
-					<?$APPLICATION->IncludeComponent(
+ 					<?
+ 					$APPLICATION->IncludeComponent(
 	"bitrix:system.auth.form", 
 	"auth_form_header", 
 	array(
@@ -57,10 +58,12 @@
 		"PROFILE_URL" => "/personal/",
 		"REGISTER_URL" => "/auth/",
 		"SHOW_ERRORS" => "N",
-		"COMPONENT_TEMPLATE" => "auth_form_header"
+		"COMPONENT_TEMPLATE" => "auth_form_header",
+		"USER_PROFILE_LINK" => "/personal/profile/"
 	),
 	false
-);?>
+);
+?>
 
 
 
