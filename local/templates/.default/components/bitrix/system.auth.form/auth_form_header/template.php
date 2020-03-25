@@ -44,11 +44,12 @@ else:
 <!-- 	<table width="95%"> -->
 <!-- 		<tr>
 			<td align="center"> -->
-				<nav class="top_menu grey inline-block">
-				<a href="<?=$arParams['USER_PROFILE_LINK'];?>" title="<?=GetMessage("AUTH_PROFILE")?>"><?=GetMessage("AUTH_USER_HELLO")?><?=$arResult["USER_NAME"]?></a><br />
+		<nav align="center" class="top_menu grey inline-block">
+
+			<p><?=GetMessage("AUTH_USER_HELLO")?><a style="font-weight: bold; color: #000;" href="<?=$arParams['USER_PROFILE_LINK'];?>" title="<?=GetMessage("AUTH_PROFILE")?>"  class=""><?=$arResult["USER_NAME"]?></a></p>
 
 
-				<a href="<?=$arParams["PROFILE_URL"]?>" title="<?=GetMessage("AUTH_PROFILE")?>"><?=GetMessage("AUTH_PROFILE")?></a><br />
+				<a href="<?=$arParams["PROFILE_URL"]?>" title="<?=GetMessage("AUTH_PROFILE")?>"><?=GetMessage("AUTH_PROFILE")?></a>
 
 				<a href="<?echo $APPLICATION->GetCurPageParam("logout=yes", array(
 				     "login",
@@ -56,7 +57,9 @@ else:
 				     "register",
 				     "forgot_password",
 				     "change_password"));?>"><?=GetMessage("AUTH_LOGOUT_BUTTON")?></a>
-				</nav>
+				
+</nav> 
+
 <!-- 
 			</td>
 		</tr> -->
