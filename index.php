@@ -2,8 +2,8 @@
 require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Рога и Сила - главная страница");
 ?>
-<?=$_SERVER["DOCUMENT_ROOT"];?>
-<? $APPLICATION->ShowTitle(); ?>
+<?//=$_SERVER["DOCUMENT_ROOT"];?>
+<?// $APPLICATION->ShowTitle(); ?>
 	<div class="slider">
 		<ul class="bxslider">
 			<li>
