@@ -26,23 +26,19 @@ $this->setFrameMode(true);
 				<a href="<?=$arItem["DETAIL_PAGE_URL"]?>"><img
 					border="0"
 					src="<?=$arItem["PREVIEW_PICTURE"]["SRC"] ?? NO_IMAGE_PATH ?>"
-					width="<?//=$arItem["PREVIEW_PICTURE"]["WIDTH"]?>"
-					height="<?//=$arItem["PREVIEW_PICTURE"]["HEIGHT"]?>"
 					alt="<?=$arItem["PREVIEW_PICTURE"]["ALT"]?>"
 					title="<?=$arItem["PREVIEW_PICTURE"]["TITLE"]?>"
 					style="float:left"
 					/>
 				</a>
 				<figcaption class="news_item_description">
-					<h3><a href="<?=$arItem["DETAIL_PAGE_URL"]?>"><?echo $arItem["NAME"]?></a></h3>
+					<h3><a href="<?=$arItem["DETAIL_PAGE_URL"]?>"><?=$arItem["NAME"]?></a></h3>
 					<div class="news_item_anons">
 						<a href="<?=$arItem["DETAIL_PAGE_URL"]?>" class="text_decor_none">
 							<?=$arItem["PREVIEW_TEXT"]?>
-							Парадигма просветляет архетип, таким образом, стратегия поведения, выгодная отдельному человеку
-
 						</a>
 					</div>
-					<div class="news_item_date grey"><?echo $arItem["DISPLAY_ACTIVE_FROM"]?></div>
+					<div class="news_item_date grey"><?=$arItem["DISPLAY_ACTIVE_FROM"]?></div>
 				</figcaption>
 			</figure>
 			<?endforeach;?>
