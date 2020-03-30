@@ -47,14 +47,14 @@ if(!empty($arIBlockFilter) && $this->StartResultCache(false, ($arParams["CACHE_G
 		"IBLOCK_ID",
 		"CODE",
 		//"IBLOCK_SECTION_ID",
-		"NAME",
+		//"NAME",
 		"PREVIEW_PICTURE",
 		"PROPERTY_WORK_HOURS",
 		"PROPERTY_PHONE",
 		"PROPERTY_ADDRESS",
 		//"PROPERTY_MAP",
 		//"DETAIL_PICTURE",
-		//"DETAIL_PAGE_URL",
+
 	);
 	//WHERE
 	$arFilter = array(
@@ -63,18 +63,14 @@ if(!empty($arIBlockFilter) && $this->StartResultCache(false, ($arParams["CACHE_G
 		"ACTIVE"=>"Y",
 		"CHECK_PERMISSIONS"=>"Y",
 	);
-	// if($arParams["PARENT_SECTION"]>0)
-	// {
-	// 	$arFilter["SECTION_ID"] = $arParams["PARENT_SECTION"];
-	// 	$arFilter["INCLUDE_SUBSECTIONS"] = "Y";
-	// }
+
 	//ORDER BY
 	$arSort = array(
 		$arParams['SORT_FIELD'] => $arParams['ORDER'],
 	);
 	//EXECUTE
 	$rsIBlockElement = CIBlockElement::GetList($arSort, $arFilter, false, array("nTopCount" => $arParams['ELEMENTS_QUANTITY']), $arSelect);
-	//$rsIBlockElement->SetUrlTemplates($arParams["DETAIL_URL"]);
+
 	?>
 
 	<?
@@ -82,17 +78,31 @@ if(!empty($arIBlockFilter) && $this->StartResultCache(false, ($arParams["CACHE_G
 	{
 
 		$arResult[$item['ID']] = $item;
-				
+		if ($item['PREVIEW_PICTURE']) {
+			$imgIDs[] = $arResult[$item['ID']]["PREVIEW_PICTURE"];		
 
-	//if($arResult = $rsIBlockElement->GetNext(true,false))
-	//{
-		
-		$arResult[$item['ID']]["PICTURE"] = CFile::GetFileArray($arResult[$item["ID"]]["PREVIEW_PICTURE"]);
+			
+			//$arResult[$item['ID']]["PICTURE"] = CFile::GetFileArray($arResult[$item["ID"]]["PREVIEW_PICTURE"]);
 
-		if(!is_array($arResult[$item['ID']]["PICTURE"]))
-			$arResult[$item['ID']]["PICTURE"] = CFile::GetFileArray($arResult["DETAIL_PICTURE"]);
+			//if(!is_array($arResult[$item['ID']]["PICTURE"]))
+				//$arResult[$item['ID']]["PICTURE"] = CFile::GetFileArray($arResult["DETAIL_PICTURE"]);
+		}
+	}
 
-}
+	if (! empty($imgIDs)) {
+		$res = CFile::GetList($arSort, array('@ID' => $imgIDs));
+		while($res_arr = $res->GetNext())
+		{
+    		$imgPath[$res_arr['ID']] = CFile::GetFileSRC($res_arr);
+			//var_dump($res_arr);
+		}
+
+		foreach ($arResult as $key => $item) {
+			$arResult[$key]['PICTURE']['SRC'] = $imgPath[$item['PREVIEW_PICTURE']];
+		}
+	}
+
+
 		$this->SetResultCacheKeys(array(
 		));
 		$this->IncludeComponentTemplate();
