@@ -27,8 +27,11 @@ $APPLICATION->SetTitle("Тестовая");
 		"SHOW_ERRORS" => "N"
 	)
 );?> <section class="content_area"> <aside class="left_block"> <nav>
-<?$APPLICATION->IncludeComponent("bitrix:menu", "menu_left", array(
-	"ALLOW_MULTI_SELECT" => "N",
+<?$APPLICATION->IncludeComponent(
+	"bitrix:menu",
+	"menu_left",
+	Array(
+		"ALLOW_MULTI_SELECT" => "N",
 		"CHILD_MENU_TYPE" => "left",
 		"COMPONENT_TEMPLATE" => "menu_left",
 		"DELAY" => "N",
@@ -40,15 +43,15 @@ $APPLICATION->SetTitle("Тестовая");
 		"ROOT_MENU_TYPE" => "bottom",
 		"USE_EXT" => "N"
 	),
-	false,
-	array(
-	"ACTIVE_COMPONENT" => "N"
-	)
-);?> </nav> </aside> </section>
+false,
+Array(
+	'ACTIVE_COMPONENT' => 'N'
+)
+);?></nav> </aside> </section>
 	<?$APPLICATION->IncludeComponent(
-	"bitrix:news.list", 
-	".default", 
-	array(
+	"bitrix:news.list",
+	".default",
+	Array(
 		"ACTIVE_DATE_FORMAT" => "d.M.Y",
 		"ADD_SECTIONS_CHAIN" => "Y",
 		"AJAX_MODE" => "N",
@@ -61,6 +64,7 @@ $APPLICATION->SetTitle("Тестовая");
 		"CACHE_TIME" => "36000000",
 		"CACHE_TYPE" => "A",
 		"CHECK_DATES" => "Y",
+		"COMPONENT_TEMPLATE" => ".default",
 		"DETAIL_URL" => "",
 		"DISPLAY_BOTTOM_PAGER" => "Y",
 		"DISPLAY_DATE" => "Y",
@@ -68,16 +72,15 @@ $APPLICATION->SetTitle("Тестовая");
 		"DISPLAY_PICTURE" => "Y",
 		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
-		"FIELD_CODE" => array(
-			0 => "",
-			1 => "",
-		),
+		"FIELD_CODE" => array(0=>"",1=>"",),
 		"FILTER_NAME" => "",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"IBLOCK_ID" => "1",
 		"IBLOCK_TYPE" => "news",
 		"INCLUDE_IBLOCK_INTO_CHAIN" => "Y",
 		"INCLUDE_SUBSECTIONS" => "Y",
+		"LIST_PREV_PICT_H" => "50",
+		"LIST_PREV_PICT_W" => "50",
 		"MESSAGE_404" => "",
 		"NEWS_COUNT" => "3",
 		"PAGER_BASE_LINK_ENABLE" => "N",
@@ -90,10 +93,7 @@ $APPLICATION->SetTitle("Тестовая");
 		"PARENT_SECTION" => "",
 		"PARENT_SECTION_CODE" => "",
 		"PREVIEW_TRUNCATE_LEN" => "150",
-		"PROPERTY_CODE" => array(
-			0 => "",
-			1 => "",
-		),
+		"PROPERTY_CODE" => array(0=>"AUTHOR_TEST",1=>"",),
 		"SET_BROWSER_TITLE" => "N",
 		"SET_LAST_MODIFIED" => "N",
 		"SET_META_DESCRIPTION" => "Y",
@@ -105,10 +105,55 @@ $APPLICATION->SetTitle("Тестовая");
 		"SORT_BY2" => "SORT",
 		"SORT_ORDER1" => "DESC",
 		"SORT_ORDER2" => "ASC",
-		"STRICT_SECTION_CHECK" => "N",
-		"COMPONENT_TEMPLATE" => ".default",
-		"LIST_PREV_PICT_H" => "10",
-		"LIST_PREV_PICT_W" => "10"
+		"STRICT_SECTION_CHECK" => "N"
 	),
-	false
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+false,
+Array(
+	'ACTIVE_COMPONENT' => 'N'
+)
+);?>
+<?$APPLICATION->IncludeComponent(
+	"mynamespace:photo.random",
+	"my_template1",
+	Array(
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "180",
+		"CACHE_TYPE" => "A",
+		"COMPONENT_TEMPLATE" => "my_template1",
+		"DETAIL_URL" => "",
+		"IBLOCKS" => "",
+		"IBLOCK_ID" => "7",
+		"IBLOCK_PROP" => "77",
+		"IBLOCK_TYPE" => "goods_and_utilities",
+		"IMG_HEIGHT" => "100",
+		"IMG_WIDTH" => "100",
+		"PARENT_SECTION" => ""
+	),
+false,
+Array(
+	'ACTIVE_COMPONENT' => 'N'
+)
+);?><?$APPLICATION->IncludeComponent(
+	"qsoft:stores.list", 
+	"stores_short", 
+	array(
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "3600",
+		"CACHE_TYPE" => "A",
+		"DETAIL_URL" => "",
+		"IBLOCKS" => "5",
+		"IBLOCK_TYPE" => "salons",
+		"PARENT_SECTION" => "",
+		"COMPONENT_TEMPLATE" => "stores_short",
+		"ELEMENTS_QUANTITY" => "2",
+		"SECTION_URL" => "/company/stores/",
+		"SORT_FIELD" => "RAND",
+		"ORDER" => "DESC"
+	),
+	false,
+	array(
+		"ACTIVE_COMPONENT" => "Y"
+	)
+);?>
+
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
