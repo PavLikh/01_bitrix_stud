@@ -11,7 +11,37 @@
 		</div>
 <footer class="footer width_960">
 			<section class="float_inner bottom_block">
-				<section class="shops_block">
+				
+				<?$APPLICATION->IncludeComponent(
+	"qsoft:stores.list", 
+	"stores_short", 
+	array(
+		"CACHE_GROUPS" => "Y",
+		"CACHE_TIME" => "3600",
+		"CACHE_TYPE" => "A",
+		"DETAIL_URL" => "",
+		"IBLOCKS" => "5",
+		"IBLOCK_TYPE" => "salons",
+		"PARENT_SECTION" => "",
+		"COMPONENT_TEMPLATE" => "stores_short",
+		"ELEMENTS_QUANTITY" => "2",
+		"SECTION_URL" => "/company/stores/",
+		"SORT_FIELD" => "RAND",
+		"ORDER" => "DESC"
+	),
+	false,
+	array(
+		"ACTIVE_COMPONENT" => "Y"
+	)
+);?>
+
+
+
+
+
+
+
+				<!-- <section class="shops_block">
 					<h2 class="inline-block">Наши салоны</h2>
 					<span class="dark_grey all_list">&nbsp;/&nbsp;<a href="#" class="text_decor_none"><b>Все</b></a></span>
 					<div>
@@ -34,7 +64,7 @@
 							</figcaption>
 						</figure>
 					</div>
-				</section>
+				</section> -->
 				<section class="info_block left_block_shadow">
 
 					<h2><?=\Bitrix\Main\Localization\Loc::getMessage('INFORMATION')?></h2>
