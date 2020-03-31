@@ -1,11 +1,24 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();?>
 <?require($_SERVER["DOCUMENT_ROOT"]."/local/templates/roga_i_sila_main/header.php");?>
 
-	<nav class="nav_chain">
+<!-- 	<nav class="nav_chain">
 		<a href="/">Главная</a>
 		<span class="nav_arrow inline-block"></span>
 		<span>Легковые</span>
-	</nav>
+	</nav> -->
+
+	<?$APPLICATION->IncludeComponent(
+		"bitrix:breadcrumb", 
+		"breadcrumbs_qsoft", 
+		array(
+			"PATH" => "",
+			"SITE_ID" => "s1",
+			"START_FROM" => "0",
+			"COMPONENT_TEMPLATE" => "breadcrumbs_qsoft"
+		),
+		false
+	);?>
+
 	<section class="content_area">
 		<aside class="left_block">
 		<nav>

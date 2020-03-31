@@ -134,26 +134,34 @@ Array(
 	'ACTIVE_COMPONENT' => 'N'
 )
 );?><?$APPLICATION->IncludeComponent(
-	"qsoft:stores.list", 
-	"stores_short", 
-	array(
+	"qsoft:stores.list",
+	"stores_short",
+	Array(
 		"CACHE_GROUPS" => "Y",
 		"CACHE_TIME" => "3600",
 		"CACHE_TYPE" => "A",
+		"COMPONENT_TEMPLATE" => "stores_short",
 		"DETAIL_URL" => "",
+		"ELEMENTS_QUANTITY" => "2",
 		"IBLOCKS" => "5",
 		"IBLOCK_TYPE" => "salons",
+		"ORDER" => "DESC",
 		"PARENT_SECTION" => "",
-		"COMPONENT_TEMPLATE" => "stores_short",
-		"ELEMENTS_QUANTITY" => "2",
 		"SECTION_URL" => "/company/stores/",
-		"SORT_FIELD" => "RAND",
-		"ORDER" => "DESC"
+		"SORT_FIELD" => "RAND"
 	),
-	false,
+false,
+Array(
+	'ACTIVE_COMPONENT' => 'Y'
+)
+);?><?$APPLICATION->IncludeComponent(
+	"bitrix:breadcrumb", 
+	"breadcrumbs_qsoft", 
 	array(
-		"ACTIVE_COMPONENT" => "Y"
-	)
-);?>
-
-<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+		"PATH" => "",
+		"SITE_ID" => "s1",
+		"START_FROM" => "0",
+		"COMPONENT_TEMPLATE" => "breadcrumbs_qsoft"
+	),
+	false
+);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
