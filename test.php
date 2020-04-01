@@ -112,11 +112,8 @@ Array(
 	'ACTIVE_COMPONENT' => 'N'
 )
 );?>
-<?$APPLICATION->IncludeComponent(
-	"mynamespace:photo.random",
-	"my_template1",
-	Array(
-		"CACHE_GROUPS" => "Y",
+<?$APPLICATION->IncludeComponent("mynamespace:photo.random", "my_template1", array(
+	"CACHE_GROUPS" => "Y",
 		"CACHE_TIME" => "180",
 		"CACHE_TYPE" => "A",
 		"COMPONENT_TEMPLATE" => "my_template1",
@@ -129,15 +126,12 @@ Array(
 		"IMG_WIDTH" => "100",
 		"PARENT_SECTION" => ""
 	),
-false,
-Array(
-	'ACTIVE_COMPONENT' => 'N'
-)
-);?><?$APPLICATION->IncludeComponent(
-	"qsoft:stores.list",
-	"stores_short",
-	Array(
-		"CACHE_GROUPS" => "Y",
+	false,
+	array(
+	"ACTIVE_COMPONENT" => "Y"
+	)
+);?><?$APPLICATION->IncludeComponent("qsoft:stores.list", "stores_short", array(
+	"CACHE_GROUPS" => "Y",
 		"CACHE_TIME" => "3600",
 		"CACHE_TYPE" => "A",
 		"COMPONENT_TEMPLATE" => "stores_short",
@@ -150,10 +144,10 @@ Array(
 		"SECTION_URL" => "/company/stores/",
 		"SORT_FIELD" => "RAND"
 	),
-false,
-Array(
-	'ACTIVE_COMPONENT' => 'Y'
-)
+	false,
+	array(
+	"ACTIVE_COMPONENT" => "N"
+	)
 );?><?$APPLICATION->IncludeComponent(
 	"bitrix:breadcrumb", 
 	"breadcrumbs_qsoft", 
@@ -164,4 +158,19 @@ Array(
 		"COMPONENT_TEMPLATE" => "breadcrumbs_qsoft"
 	),
 	false
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+);?>
+
+<? echo $_SERVER["DOCUMENT_ROOT"]."/local/php_interface/include/logifle.log"; ?>
+<? echo '<br>' . SITE_TEMPLATE_PATH; ?>
+<?
+if(file_exists($_SERVER["DOCUMENT_ROOT"]."/local/php_interface/include/logifle.log")) {
+	echo 'EXISTS';
+}
+    	 //fwrite(fopen('logifle.log',"a"),"Hello");
+    	 //fwrite(fopen($_SERVER["DOCUMENT_ROOT"].'/local/php_interface/logifle.log',"a"),"Hello321");
+    	 //fclose('logifle.log');
+    	
+?>
+
+
+<?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

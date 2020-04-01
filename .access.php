@@ -1,8 +1,13 @@
 <?
-$PERM["404.php"]["7"]="X";
-$PERM["404.php"]["8"]="X";
+$PERM["company"]["2"]="D";
+$PERM["company"]["6"]="R";
+$PERM["company"]["3"]="R";
+$PERM["company"]["4"]="R";
 $PERM["company"]["7"]="X";
 $PERM["company"]["8"]="X";
 $PERM["company"]["*"]="X";
+$PERM["/"]["6"]="R";
+$PERM["404.php"]["7"]="X";
+$PERM["404.php"]["8"]="X";
 $PERM["catalog"]["7"]="X";
 ?>

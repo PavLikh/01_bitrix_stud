@@ -16,7 +16,7 @@
 	"qsoft:stores.list", 
 	"stores_short", 
 	array(
-		"CACHE_GROUPS" => "Y",
+		"CACHE_GROUPS" => "N",
 		"CACHE_TIME" => "3600",
 		"CACHE_TYPE" => "A",
 		"DETAIL_URL" => "",
