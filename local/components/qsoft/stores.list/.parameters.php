@@ -16,13 +16,6 @@ while($arr=$rsIBlock->Fetch())
 }
 
 
-
-
-
-
-
-
-
 $arComponentParameters = array(
 	"GROUPS" => array(
 	),
@@ -59,36 +52,17 @@ $arComponentParameters = array(
 			"NAME" => GetMessage("SORT_FIELD"),
 			"TYPE" => "LIST",
 			"VALUES" => array(
-				'RAND' => 'Случайный порядок',)
+				'RAND' => GetMessage("SORT_RAND"),)
 		),
 		"ORDER" => array(
 			"PARENT" => "BASE",
 			"NAME" => GetMessage("ORDER"),
 			"TYPE" => "LIST",
 			"VALUES" => array(
-				'DESC' => 'По убыванию',)
+				'DESC' => GetMessage("ORDER_DESC"),)
 		),
 
-		// "PARENT_SECTION" => array(
-		// 	"PARENT" => "ADDITIONAL_SETTINGS",
-		// 	"NAME" => GetMessage("IBLOCK_SECTION_ID"),
-		// 	"TYPE" => "STRING",
-		// 	"DEFAULT" => '',
-		// ),
-		// "DETAIL_URL" => CIBlockParameters::GetPathTemplateParam(
-		// 	"DETAIL",
-		// 	"DETAIL_URL",
-		// 	GetMessage("IBLOCK_DETAIL_URL"),
-		// 	"",
-		// 	"URL_TEMPLATES"
-		// ),
 		"CACHE_TIME"  =>  Array("DEFAULT"=>180),
-		"CACHE_GROUPS" => array(
-			"PARENT" => "CACHE_SETTINGS",
-			"NAME" => GetMessage("CP_BPR_CACHE_GROUPS"),
-			"TYPE" => "CHECKBOX",
-			"DEFAULT" => "Y",
-		),
 	),
 );
 ?>

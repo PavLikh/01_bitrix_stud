@@ -9,4 +9,7 @@ $MESS["ELEMENTS_QUANTITY"] = "Количество отображаемых эл
 $MESS["SECTION_URL"] = 'URL-адрес ссылки "ВСЕ"';
 $MESS["SORT_FIELD"] = 'Поле сортировки';
 $MESS["ORDER"] = 'Порядок сортировки';
+$MESS["ORDER_DESC"] = 'По убыванию';
+$MESS["SORT_RAND"] = 'Случайный порядок';
+
 ?>
