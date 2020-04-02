@@ -39,7 +39,7 @@ $arComponentParameters = array(
 			"NAME" => GetMessage("IBLOCK_IBLOCK"),
 			"TYPE" => "LIST",
 			"VALUES" => $arIBlock,
-			
+			"MULTIPLE" => "Y",
 			"REFRESH" => "Y",
 		),
 		// "PARENT_SECTION" => array(

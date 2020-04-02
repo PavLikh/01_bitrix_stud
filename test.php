@@ -112,14 +112,20 @@ Array(
 	'ACTIVE_COMPONENT' => 'N'
 )
 );?>
-<?$APPLICATION->IncludeComponent("mynamespace:photo.random", "my_template1", array(
-	"CACHE_GROUPS" => "Y",
+<?$APPLICATION->IncludeComponent(
+	"mynamespace:photo.random", 
+	"my_template1", 
+	array(
+		"CACHE_GROUPS" => "Y",
 		"CACHE_TIME" => "180",
 		"CACHE_TYPE" => "A",
 		"COMPONENT_TEMPLATE" => "my_template1",
 		"DETAIL_URL" => "",
 		"IBLOCKS" => "",
-		"IBLOCK_ID" => "7",
+		"IBLOCK_ID" => array(
+			0 => "7",
+			1 => "8",
+		),
 		"IBLOCK_PROP" => "77",
 		"IBLOCK_TYPE" => "goods_and_utilities",
 		"IMG_HEIGHT" => "100",
@@ -128,7 +134,7 @@ Array(
 	),
 	false,
 	array(
-	"ACTIVE_COMPONENT" => "Y"
+		"ACTIVE_COMPONENT" => "Y"
 	)
 );?><?$APPLICATION->IncludeComponent("qsoft:stores.list", "stores_short", array(
 	"CACHE_GROUPS" => "Y",
@@ -160,16 +166,18 @@ Array(
 	false
 );?>
 
-<? echo $_SERVER["DOCUMENT_ROOT"]."/local/php_interface/include/logifle.log"; ?>
-<? echo '<br>' . SITE_TEMPLATE_PATH; ?>
+<?// echo $_SERVER["DOCUMENT_ROOT"]."/local/php_interface/include/logifle.log"; ?>
+<?// echo '<br>' . SITE_TEMPLATE_PATH; ?>
 <?
 if(file_exists($_SERVER["DOCUMENT_ROOT"]."/local/php_interface/include/logifle.log")) {
-	echo 'EXISTS';
+//	echo 'EXISTS';
 }
     	 //fwrite(fopen('logifle.log',"a"),"Hello");
     	 //fwrite(fopen($_SERVER["DOCUMENT_ROOT"].'/local/php_interface/logifle.log',"a"),"Hello321");
     	 //fclose('logifle.log');
-    	
+
+
+
 ?>
 
 
