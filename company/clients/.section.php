@@ -1,3 +1,6 @@
 <?
-$sSectionName="Для клиентов";
+$sSectionName = "Для клиентов";
+$arDirProperties = array(
+
+);
 ?>

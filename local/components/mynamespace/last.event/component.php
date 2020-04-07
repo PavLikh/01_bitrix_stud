@@ -18,9 +18,9 @@ if(!isset($arParams["CACHE_TIME"]))
 	$arParams["CACHE_TIME"] = 180;
 
 $arParams['IBLOCK_ID'] = intval($arParams['IBLOCK_ID']);
-$arParams['IBLOCK_PROP'] = intval($arParams['IBLOCK_PROP']);
 
-if($arParams['IBLOCK_ID'] > 0 && $arParams['IBLOCK_PROP'] > 0 && $this->StartResultCache(false, ($arParams["CACHE_GROUPS"]==="N"? false: $USER->GetGroups())))
+
+if($arParams['IBLOCK_ID'] > 0 && $this->StartResultCache(false, ($arParams["CACHE_GROUPS"]==="N"? false: $USER->GetGroups())))
 {
 	if(!CModule::IncludeModule("iblock"))
 	{
@@ -38,7 +38,7 @@ if($arParams['IBLOCK_ID'] > 0 && $arParams['IBLOCK_PROP'] > 0 && $this->StartRes
 		//"IBLOCK_SECTION_ID",
 		"NAME",
 		"PREVIEW_TEXT",
-		"DETAIL_PICTURE",
+		"PROPERTY CITY",
 		//"DETAIL_PAGE_URL",
 	);
 	//WHERE
@@ -46,11 +46,10 @@ if($arParams['IBLOCK_ID'] > 0 && $arParams['IBLOCK_PROP'] > 0 && $this->StartRes
 		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
 		"IBLOCK_ID" => 7,
 		//"ID",
-		"ACTIVE_DATE" => "Y",
 		"ACTIVE"=>"Y",
 		"CHECK_PERMISSIONS"=>"Y",
-		"!PROPERTY_".$arParams['IBLOCK_PROP'] => false,
-		//"!PROPERTY_COLOR" => false
+		">=DATE_ACTIVE_FROM"=>ConvertTimeStamp(false,"SHORT"), //короткий формат нужна сорт. только по дате
+
 	);
 	if($arParams["PARENT_SECTION"]>0)
 	{
@@ -59,22 +58,23 @@ if($arParams['IBLOCK_ID'] > 0 && $arParams['IBLOCK_PROP'] > 0 && $this->StartRes
 	}
 	//ORDER BY
 	$arSort = array(
-		"RAND"=>"ASC",
+		"DATE_ACTIVE_FROM"=>"ASC",
 		
 	);
 
 
 	//EXECUTE
 	$rsIBlockElement = CIBlockElement::GetList($arSort, $arFilter, false, false, $arSelect);
-	//$rsIBlockElement->SetUrlTemplates($arParams["DETAIL_URL"]);
+	$rsIBlockElement->SetUrlTemplates($arParams["DETAIL_URL"]);
 	if($arResult = $rsIBlockElement->GetNext(false, false))
 	{
 		//$arResult[] = $arResult
-		$arResult['PICTURE'] = CFile::ResizeImageGet($arResult['DETAIL_PICTURE'], array('width'=>$arParams['IMG_WIDTH'], 'height'=>$arParams['IMG_HEIGHT']), BX_RESIZE_IMAGE_PROPORTIONAL, true);
+		
 
 
 ?><pre>
 		<?// var_dump($arResult); ?>
+		<?//='HORSE';?>
 </pre><?
 
 		$this->SetResultCacheKeys(array(
