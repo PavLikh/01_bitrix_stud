@@ -7,6 +7,15 @@ if(is_array($arResult["DETAIL_PICTURE"])):?>
 
 <?echo $arResult["DETAIL_TEXT"]; ?>
 
+
+<pre>
+<?//var_dump($arResult);?>
+<?//var_dump($arParams);?>
+
+</pre>
+
+
+
 <?if($arResult['AUTHOR_TEST']):?>
 	Автор: <?//=$arResult['AUTHOR_TEST']['NAME']?> <!--тк массив автор изменился то не будет выводится-->
 	<?=$arResult['AUTHOR_TEST'][0]?>

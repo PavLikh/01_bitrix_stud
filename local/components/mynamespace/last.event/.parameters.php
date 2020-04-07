@@ -16,6 +16,7 @@ while($arr=$rsIBlock->Fetch())
 }
 
 
+
 $arComponentParameters = array(
 	"GROUPS" => array(
 	),
@@ -27,42 +28,39 @@ $arComponentParameters = array(
 			"VALUES" => $arIBlockType,
 			"REFRESH" => "Y",
 		),
-		"IBLOCKS" => array(
+		"IBLOCK_ID" => array(
 			"PARENT" => "BASE",
 			"NAME" => GetMessage("IBLOCK_IBLOCK"),
 			"TYPE" => "LIST",
 			"VALUES" => $arIBlock,
-			//"MULTIPLE"=>"Y",
+			"MULTIPLE" => "Y",
 			"REFRESH" => "Y",
 		),
-		"ELEMENTS_QUANTITY" => array(
-			"PARENT" => "BASE",
-			"NAME" => GetMessage("ELEMENTS_QUANTITY"),
-			"TYPE" => "STRING",
-			"DEFAULT" => '2',
-		),
-		"SECTION_URL" => array(
-			"PARENT" => "BASE",
-			"NAME" => GetMessage("SECTION_URL"),
+		"PARENT_SECTION" => array(
+			"PARENT" => "ADDITIONAL_SETTINGS",
+			"NAME" => GetMessage("IBLOCK_SECTION_ID"),
 			"TYPE" => "STRING",
 			"DEFAULT" => '',
 		),
-		"SORT_FIELD" => array(
-			"PARENT" => "BASE",
-			"NAME" => GetMessage("SORT_FIELD"),
-			"TYPE" => "LIST",
-			"VALUES" => array(
-				'RAND' => GetMessage("SORT_RAND"),)
+		"DETAIL_URL" => CIBlockParameters::GetPathTemplateParam(
+			"DETAIL",
+			"DETAIL_URL",
+			GetMessage("IBLOCK_DETAIL_URL"),
+			"",
+			"URL_TEMPLATES"
 		),
-		"ORDER" => array(
-			"PARENT" => "BASE",
-			"NAME" => GetMessage("ORDER"),
-			"TYPE" => "LIST",
-			"VALUES" => array(
-				'DESC' => GetMessage("ORDER_DESC"),)
-		),
-
 		"CACHE_TIME"  =>  Array("DEFAULT"=>180),
+		"CACHE_GROUPS" => array(
+			"PARENT" => "CACHE_SETTINGS",
+			"NAME" => GetMessage("CP_BPR_CACHE_GROUPS"),
+			"TYPE" => "CHECKBOX",
+			"DEFAULT" => "Y",
+		),
+			
+		// 	"REFRESH" => "Y",
+		// ),
+
+		
 	),
 );
 ?>
