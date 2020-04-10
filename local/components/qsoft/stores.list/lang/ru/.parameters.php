@@ -11,5 +11,6 @@ $MESS["SORT_FIELD"] = 'Поле сортировки';
 $MESS["ORDER"] = 'Порядок сортировки';
 $MESS["ORDER_DESC"] = 'По убыванию';
 $MESS["SORT_RAND"] = 'Случайный порядок';
+$MESS["T_IBLOCK_DESC_SHOW_MAP"] = 'Показывать карту';
 
 ?>

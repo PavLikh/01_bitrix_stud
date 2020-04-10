@@ -3,11 +3,12 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Title");
 ?><?$APPLICATION->IncludeComponent(
 	"bitrix:catalog.store",
-	"",
+	".default",
 	Array(
 		"CACHE_NOTES" => "",
 		"CACHE_TIME" => "3600",
 		"CACHE_TYPE" => "A",
+		"COMPONENT_TEMPLATE" => ".default",
 		"MAP_TYPE" => "0",
 		"PHONE" => "N",
 		"SCHEDULE" => "N",
@@ -15,26 +16,30 @@ $APPLICATION->SetTitle("Title");
 		"SEF_MODE" => "Y",
 		"SEF_URL_TEMPLATES" => array("liststores"=>"index.php","element"=>"#store_id#",),
 		"SET_TITLE" => "Y",
-		"TITLE" => "Список складов с подробной информацией",
-		"VARIABLE_ALIASES" => array("liststores"=>"","element"=>"",)
+		"TITLE" => "Список складов с подробной информацией"
 	),
 false,
 Array(
 	'ACTIVE_COMPONENT' => 'N'
 )
-);?><?$APPLICATION->IncludeComponent(
+);?> <section class="float_inner bottom_block">
+<?$APPLICATION->IncludeComponent(
 	"qsoft:stores.list", 
-	"stores_short", 
+	"stores_full", 
 	array(
 		"CACHE_TIME" => "3600",
 		"CACHE_TYPE" => "A",
+		"COMPONENT_TEMPLATE" => "stores_full",
 		"ELEMENTS_QUANTITY" => "2",
 		"IBLOCKS" => "5",
 		"IBLOCK_TYPE" => "salons",
 		"ORDER" => "DESC",
 		"SECTION_URL" => "",
-		"SORT_FIELD" => "RAND",
-		"COMPONENT_TEMPLATE" => "stores_short"
+		"SHOW_MAP" => "Y",
+		"SORT_FIELD" => "RAND"
 	),
-	false
-);?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
+	false,
+	array(
+		"ACTIVE_COMPONENT" => "Y"
+	)
+);?></section><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
