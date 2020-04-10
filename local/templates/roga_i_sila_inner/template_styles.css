@@ -21,11 +21,11 @@ hr.bottom_line{
 
 /*news - разные стили на главнойи на вложенной!!!!!*/
 .news_block{
-	overflow: auto;
+	/*overflow: auto;*/ /* было перенес в .news_item */
 }
 .news_item{
 	width: 625px;
-	margin-bottom: 11px;
+	overflow: auto;
 }
 	.news_item:first-child{
 		margin-left: 0;
@@ -38,8 +38,12 @@ hr.bottom_line{
 		float: left;
 		width: 120px;
 		height: auto;
+		overflow: auto;
 		margin: 5px 0 0 0;
+		
 	}
+
+
 .news_item_description{
 	margin-left: 140px;
 	margin-top: 0px;
