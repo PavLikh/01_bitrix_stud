@@ -29,7 +29,7 @@
 							
 		<figure class="news_item" id="<?=$this->GetEditAreaId($arItem['ID']);?>">
 
-				<a class="news_link" href="<?=$arItem["DETAIL_PAGE_URL"]?>">
+				<a href="<?=$arItem["DETAIL_PAGE_URL"]?>">
 					<img
 					src="<?=$arItem["PREVIEW_PICTURE"]["SRC"] ?? NO_IMAGE_PATH ?>"
 					alt="<?=$arItem["PREVIEW_PICTURE"]["ALT"]?>"
@@ -39,7 +39,7 @@
 			
 				<figcaption class="news_item_description">
 					<div class="news_item_anons">
-						<h3 class="dark_grey"><a href="#"><?=$arItem["NAME"]?></a></h3>
+						<h3 class="dark_grey"><a href="<?=$arItem["DETAIL_PAGE_URL"]?>"><?=$arItem["NAME"]?></a></h3>
 						<p><?=$arItem["PREVIEW_TEXT"]?></p>
 					</div>
 					<p class="news_item_date grey"><?=$arItem["DISPLAY_ACTIVE_FROM"]?></p>

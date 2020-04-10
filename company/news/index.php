@@ -64,7 +64,7 @@ $APPLICATION->SetTitle("Title");
 		"MESSAGE_404" => "",
 		"META_DESCRIPTION" => "-",
 		"META_KEYWORDS" => "-",
-		"NEWS_COUNT" => "5",
+		"NEWS_COUNT" => "10",
 		"NUM_DAYS" => "180",
 		"NUM_NEWS" => "20",
 		"PAGER_BASE_LINK_ENABLE" => "N",
@@ -100,6 +100,8 @@ $APPLICATION->SetTitle("Title");
 		"USE_SEARCH" => "N",
 		"USE_SHARE" => "N",
 		"YANDEX" => "N",
+		"LIST_PREV_PICT_H" => "100",
+		"LIST_PREV_PICT_W" => "100",
 		"SEF_URL_TEMPLATES" => array(
 			"news" => "",
 			"section" => "",
