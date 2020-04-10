@@ -7,7 +7,7 @@ if(!CModule::IncludeModule("iblock"))
 $arIBlockType = CIBlockParameters::GetIBlockTypes();
 
 $arIBlock=array(
-	"-" => GetMessage("IBLOCK_ANY"),
+	//"-" => GetMessage("IBLOCK_ANY"),
 );
 $rsIBlock = CIBlock::GetList(Array("sort" => "asc"), Array("TYPE" => $arCurrentValues["IBLOCK_TYPE"], "ACTIVE"=>"Y"));
 while($arr=$rsIBlock->Fetch())
@@ -61,6 +61,12 @@ $arComponentParameters = array(
 			"VALUES" => array(
 				'DESC' => GetMessage("ORDER_DESC"),)
 		),
+		"SHOW_MAP" => array(
+		   "PARENT" => "DATA_SOURCE",
+		   "NAME" => GetMessage("T_IBLOCK_DESC_SHOW_MAP"),
+		   "TYPE" => "CHECKBOX",
+		   "DEFAULT" => "Y",
+		),	
 
 		"CACHE_TIME"  =>  Array("DEFAULT"=>180),
 	),

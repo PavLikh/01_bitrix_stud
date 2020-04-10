@@ -10,7 +10,7 @@
 /** @var string $templateFolder */
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
-$this->setFrameMode(true);
+//$this->setFrameMode(true);
 ?>
 
 
@@ -38,6 +38,7 @@ $this->setFrameMode(true);
 		
 
 <?endforeach;?>
+
 <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
 	<br /><?=$arResult["NAV_STRING"]?>
 <?endif;?>

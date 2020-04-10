@@ -11,4 +11,5 @@ $MESS["SORT_FIELD"] = 'Sort field';
 $MESS["ORDER"] = 'Order';
 $MESS["ORDER_DESC"] = 'Descending';
 $MESS["SORT_RAND"] = 'Random';
+$MESS["T_IBLOCK_DESC_SHOW_MAP"] = 'Show map';
 ?>

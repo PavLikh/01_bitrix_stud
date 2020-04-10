@@ -198,4 +198,5 @@ $APPLICATION->SetTitle("Рога и Сила - главная страница")
 		</div>
 	</section>-->
 
+
 <?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>
