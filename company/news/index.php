@@ -3,7 +3,7 @@ require($_SERVER["DOCUMENT_ROOT"]."/bitrix/header.php");
 $APPLICATION->SetTitle("Title");
 ?><?$APPLICATION->IncludeComponent(
 	"bitrix:news", 
-	"news_list_inner", 
+	"news", 
 	array(
 		"ADD_ELEMENT_CHAIN" => "Y",
 		"ADD_SECTIONS_CHAIN" => "N",
@@ -21,7 +21,7 @@ $APPLICATION->SetTitle("Title");
 		"CHECK_DATES" => "Y",
 		"COLOR_NEW" => "3E74E6",
 		"COLOR_OLD" => "C0C0C0",
-		"COMPONENT_TEMPLATE" => "news_list_inner",
+		"COMPONENT_TEMPLATE" => "news",
 		"DETAIL_ACTIVE_DATE_FORMAT" => "d.M.Y",
 		"DETAIL_DISPLAY_BOTTOM_PAGER" => "Y",
 		"DETAIL_DISPLAY_TOP_PAGER" => "N",
