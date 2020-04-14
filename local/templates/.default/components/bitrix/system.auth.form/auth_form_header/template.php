@@ -1,6 +1,6 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
 
-CJSCore::Init();
+//CJSCore::Init();
 ?>
 
 <!-- <div class="bx-system-auth-form"> -->
@@ -16,35 +16,25 @@ CJSCore::Init();
 // echo '<br>';
 //var_dump($arParams);
 ?>
-<!-- 					<nav class="top_menu grey inline-block">
-						<a href="<?=$arParams["REGISTER_URL"];?>?register=yes" class="register">Регистрация</a>
-						<a href="<?=$arParams["REGISTER_URL"];?>" class="auth">Авторизация</a>
-					</nav> -->
-
 
 <?
 if ($arResult['SHOW_ERRORS'] == 'Y' && $arResult['ERROR'])
 	ShowMessage($arResult['ERROR_MESSAGE']);
 ?>
-
 <?if($arResult["FORM_TYPE"] == "login"):?>
 	<nav class="top_menu grey inline-block">
-		<!-- <a href="<?=$arParams["REGISTER_URL"];?>?register=yes" class="register"><?=\Bitrix\Main\Localization\Loc::getMessage('AUTH_REGISTER')?></a> -->
-		<a href="<?=$arResult["AUTH_REGISTER_URL"];?>" class="register"><?=\Bitrix\Main\Localization\Loc::getMessage('AUTH_REGISTER')?></a>
-		<a href="<?=$arParams["REGISTER_URL"];?>" class="auth"><?=\Bitrix\Main\Localization\Loc::getMessage('auth_form_comp_auth')?></a>
-	</nav>
 
+		<a href="<?=$arResult["AUTH_REGISTER_URL"];?>" class="register"><?=\Bitrix\Main\Localization\Loc::getMessage('AUTH_REGISTER')?></a>
+		<!--<a href="<?=$arParams["REGISTER_URL"];?>" class="auth"><?=\Bitrix\Main\Localization\Loc::getMessage('auth_form_comp_auth')?></a>-->
+		
+		<a href="<?=$arParams["AUTH_URL"]?>?backurl=<?=$arResult['BACKURL'] ?? '' ;?>" class="auth"><?=\Bitrix\Main\Localization\Loc::getMessage('auth_form_comp_auth')?></a>
+	</nav>
 
 <?
 ////Проверка на login
 else:
 ?>
 
-<!-- <form action="<?=$arResult["AUTH_URL"]?>">
-	<h3>Zaregin</h3> -->
-<!-- 	<table width="95%"> -->
-<!-- 		<tr>
-			<td align="center"> -->
 
 					<nav class="top_menu grey inline-block authorize">
 						<span><?=GetMessage("AUTH_USER_HELLO")?></span>
