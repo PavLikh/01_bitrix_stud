@@ -20,7 +20,7 @@
 
 		<?foreach ($arResult['ITEMS'] as $key => $item):?>
 				<figure class="shops_block_item">
-					<a href=""><img src="<?=$item["PICTURE"]["SRC"]?>" alt="" title="" /></a>
+					<a href=""><img src="<?=$item["PICTURE"]["SRC"] ?? NO_IMAGE_PATH ?>" alt="" title="" /></a>
 					<figcaption class="shops_block_item_description">
 						<h3 class="shops_block_item_name"><?=$item["NAME"]?></h3>
 						<p class="dark_grey"><?=$item["PROPERTY_ADDRESS_VALUE"]?></p>
