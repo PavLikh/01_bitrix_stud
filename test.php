@@ -136,11 +136,8 @@ Array(
 	array(
 	"ACTIVE_COMPONENT" => "N"
 	)
-);?><?$APPLICATION->IncludeComponent(
-	"qsoft:stores.list",
-	"stores_short",
-	Array(
-		"CACHE_GROUPS" => "Y",
+);?><?$APPLICATION->IncludeComponent("qsoft:stores.list", "stores_short", array(
+	"CACHE_GROUPS" => "Y",
 		"CACHE_TIME" => "3600",
 		"CACHE_TYPE" => "A",
 		"COMPONENT_TEMPLATE" => "stores_short",
@@ -153,10 +150,10 @@ Array(
 		"SECTION_URL" => "/company/stores/",
 		"SORT_FIELD" => "RAND"
 	),
-false,
-Array(
-	'ACTIVE_COMPONENT' => 'N'
-)
+	false,
+	array(
+	"ACTIVE_COMPONENT" => "Y"
+	)
 );?><?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "breadcrumbs_qsoft", array(
 	"COMPONENT_TEMPLATE" => "breadcrumbs_qsoft",
 		"PATH" => "",

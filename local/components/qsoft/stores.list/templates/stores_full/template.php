@@ -15,8 +15,13 @@
 
 ?>
 
+<pre>
+	<?var_dump($arResult);?>
+</pre>
 
 		<?
+
+
 			//получаем ссылки для редактирования и удаления элемента
 			$arButtons = CIBlock::GetPanelButtons(
 			$arParams['IBLOCKS'],
