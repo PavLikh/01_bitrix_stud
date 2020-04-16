@@ -17,6 +17,7 @@ class StoreList extends CBitrixComponent
 	{
 		$this->checkModules();
 		$this->getResult();
+		$this->IncludeComponentTemplate();
 		
 	}
 
@@ -64,106 +65,106 @@ class StoreList extends CBitrixComponent
 				"ACTIVE"=>"Y",
 			);
 
-			if ($this->arParams['SHOW_MAP']) {
-	  		$arSelect[] = 'PROPERTY_MAP';
-	  		$arSelect[] = "SEARCHABLE_CONTENT";
+			if ($arParams['SHOW_MAP']) {
+		  		$arSelect[] = 'PROPERTY_MAP';
+		  		$arSelect[] = "SEARCHABLE_CONTENT";
+			
+
+				//EXECUTE
+				$rsIBlockElement = CIBlockElement::GetList($arSort, $arFilter, false, false /*array("nTopCount" => $arParams['ELEMENTS_QUANTITY'])*/, $arSelect);
+
+				?>
+
+				<?
+				$i = 0;
+				while ($item = $rsIBlockElement->GetNext(true, false))
+				{
+
+					list($lat, $lon) = explode(',', $item['PROPERTY_MAP_VALUE']);
+					$data[] = [
+						'LAT' => $lat,
+						'LON' => $lon,
+						'TEXT' => $item["PROPERTY_ADDRESS_VALUE"],
+					];
+					//$arResult[$item['ID']] = $item;
+					$arResult["ITEMS"][] = $item;
+					if ($item['PREVIEW_PICTURE']) {
+						//$imgIDs[] = $arResult[$item['ID']]["PREVIEW_PICTURE"];		
+						$imgIDs[] = $arResult["ITEMS"][$i]["PREVIEW_PICTURE"];		
+
+					}
+
+					//$arResult[$i]['POSITION'] = $data;
+					$i++;
+				}
+
+				$arResult['POSITION'] = $data;
+
+				if (! empty($imgIDs)) {
+					$res = CFile::GetList($arSort, array('@ID' => $imgIDs));
+					while($res_arr = $res->GetNext())
+					{
+			    		$imgPath[$res_arr['ID']] = CFile::GetFileSRC($res_arr);
+					}
+
+					foreach ($arResult['ITEMS'] as $key => $item) {
+
+								$arResult['ITEMS'][$key]['PICTURE']['SRC'] = $imgPath[$item['PREVIEW_PICTURE']];
+
+					}
+				}
+
+				$this->arResult = $arResult;		
+				$this->SetResultCacheKeys(array('POSITION',
+				));
+
+				//$this->setEditButtons();
+
+
+			} else {
+
+				//EXECUTE
+				$rsIBlockElement = CIBlockElement::GetList($arSort, $arFilter, false, array("nTopCount" => $arParams['ELEMENTS_QUANTITY']), $arSelect);
+
+				$i = 0;
+				while ($item = $rsIBlockElement->GetNext(true, false))
+				{
+
+
+					//$arResult[$item['ID']] = $item;
+					$arResult["ITEMS"][] = $item;
+					if ($item['PREVIEW_PICTURE']) {
+						//$imgIDs[] = $arResult[$item['ID']]["PREVIEW_PICTURE"];		
+						$imgIDs[] = $arResult["ITEMS"][$i]["PREVIEW_PICTURE"];		
+
+					}
+					$i++;
+				}
+
+				if (! empty($imgIDs)) {
+					$res = CFile::GetList($arSort, array('@ID' => $imgIDs));
+					while($res_arr = $res->GetNext())
+					{
+			    		$imgPath[$res_arr['ID']] = CFile::GetFileSRC($res_arr);
+					}
+
+					foreach ($arResult['ITEMS'] as $key => $item) {
+
+								$arResult['ITEMS'][$key]['PICTURE']['SRC'] = $imgPath[$item['PREVIEW_PICTURE']];
+
+					}
+				}
+
+				 $this->arResult = $arResult;
+
+
+
+				$this->SetResultCacheKeys(array(
+				));
+
+
+			}
 		
-
-			//EXECUTE
-			$rsIBlockElement = CIBlockElement::GetList($arSort, $arFilter, false, false /*array("nTopCount" => $arParams['ELEMENTS_QUANTITY'])*/, $arSelect);
-
-			?>
-
-			<?
-			$i = 0;
-			while ($item = $rsIBlockElement->GetNext(true, false))
-			{
-
-				list($lat, $lon) = explode(',', $item['PROPERTY_MAP_VALUE']);
-				$data[] = [
-					'LAT' => $lat,
-					'LON' => $lon,
-					'TEXT' => $item["PROPERTY_ADDRESS_VALUE"],
-				];
-				//$arResult[$item['ID']] = $item;
-				$arResult["ITEMS"][] = $item;
-				if ($item['PREVIEW_PICTURE']) {
-					//$imgIDs[] = $arResult[$item['ID']]["PREVIEW_PICTURE"];		
-					$imgIDs[] = $arResult["ITEMS"][$i]["PREVIEW_PICTURE"];		
-
-				}
-
-				//$arResult[$i]['POSITION'] = $data;
-				$i++;
-			}
-
-			$arResult['POSITION'] = $data;
-
-			if (! empty($imgIDs)) {
-				$res = CFile::GetList($arSort, array('@ID' => $imgIDs));
-				while($res_arr = $res->GetNext())
-				{
-		    		$imgPath[$res_arr['ID']] = CFile::GetFileSRC($res_arr);
-				}
-
-				foreach ($arResult['ITEMS'] as $key => $item) {
-
-							$arResult['ITEMS'][$key]['PICTURE']['SRC'] = $imgPath[$item['PREVIEW_PICTURE']];
-
-				}
-			}
-
-					
-			$this->SetResultCacheKeys(array('POSITION',
-			));
-
-			//$this->setEditButtons();
-
-
-		} else {
-
-			//EXECUTE
-			$rsIBlockElement = CIBlockElement::GetList($arSort, $arFilter, false, array("nTopCount" => $arParams['ELEMENTS_QUANTITY']), $arSelect);
-
-			$i = 0;
-			while ($item = $rsIBlockElement->GetNext(true, false))
-			{
-
-
-				//$arResult[$item['ID']] = $item;
-				$arResult["ITEMS"][] = $item;
-				if ($item['PREVIEW_PICTURE']) {
-					//$imgIDs[] = $arResult[$item['ID']]["PREVIEW_PICTURE"];		
-					$imgIDs[] = $arResult["ITEMS"][$i]["PREVIEW_PICTURE"];		
-
-				}
-				$i++;
-			}
-
-			if (! empty($imgIDs)) {
-				$res = CFile::GetList($arSort, array('@ID' => $imgIDs));
-				while($res_arr = $res->GetNext())
-				{
-		    		$imgPath[$res_arr['ID']] = CFile::GetFileSRC($res_arr);
-				}
-
-				foreach ($arResult['ITEMS'] as $key => $item) {
-
-							$arResult['ITEMS'][$key]['PICTURE']['SRC'] = $imgPath[$item['PREVIEW_PICTURE']];
-
-				}
-			}
-
-			 $this->arResult = $arResult;
-
-
-
-			$this->SetResultCacheKeys(array(
-			));
-
-
-		}
-		$this->IncludeComponentTemplate();
 	
 		}
 	}
