@@ -8,7 +8,7 @@ class StoreList extends CBitrixComponent
 			$arParams["CACHE_TIME"] = 3600;
 
 		if(!is_array($arParams["IBLOCKS"]))
-			$arParams["IBLOCKS"] = array($arParams["IBLOCKS"]);
+			$arParams["IBLOCKS"] = intval($arParams["IBLOCKS"]);
 		
 		return $arParams;
 	}
@@ -65,6 +65,11 @@ class StoreList extends CBitrixComponent
 				"ACTIVE"=>"Y",
 			);
 
+
+
+
+
+
 			if ($arParams['SHOW_MAP']) {
 		  		$arSelect[] = 'PROPERTY_MAP';
 		  		$arSelect[] = "SEARCHABLE_CONTENT";
@@ -75,10 +80,31 @@ class StoreList extends CBitrixComponent
 
 				?>
 
+
+				<?					//получаем ссылки для редактирования и удаления элемента
+					?>
+
+
+
 				<?
 				$i = 0;
 				while ($item = $rsIBlockElement->GetNext(true, false))
 				{
+
+
+					$arButtons = CIBlock::GetPanelButtons(
+						$arParams['IBLOCKS'],
+						$item['ID'],
+						0,
+						array("SECTION_BUTTONS"=>false, "SESSID"=>false)
+					);	
+
+					$item["ADD_LINK"] = $arButtons["edit"]["add_element"]["ACTION_URL"];
+					$item["EDIT_LINK"] = $arButtons["edit"]["edit_element"]["ACTION_URL"];
+					$item["DELETE_LINK"] = $arButtons["edit"]["delete_element"]["ACTION_URL"];
+					
+
+
 
 					list($lat, $lon) = explode(',', $item['PROPERTY_MAP_VALUE']);
 					$data[] = [
@@ -93,7 +119,9 @@ class StoreList extends CBitrixComponent
 						$imgIDs[] = $arResult["ITEMS"][$i]["PREVIEW_PICTURE"];		
 
 					}
-
+					$arResult["TEST_TEST_ADD_LINK"][] = $arButtons["edit"]["add_element"]["ACTION_URL"];
+					$arResult["TEST_TEST_EDIT_LINK"][] = $arButtons["edit"]["edit_element"]["ACTION_URL"];
+					$arResult["TEST_TEST_DELETE_LINK"][] = $arButtons["edit"]["delete_element"]["ACTION_URL"];
 					//$arResult[$i]['POSITION'] = $data;
 					$i++;
 				}

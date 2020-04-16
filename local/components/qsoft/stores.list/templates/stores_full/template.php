@@ -16,20 +16,23 @@
 ?>
 
 <pre>
-	<?var_dump($arResult);?>
+	<?var_dump($arParams)?>
+	<?var_dump($arResult)?>
 </pre>
+
+
 
 		<?
 
 
 			//получаем ссылки для редактирования и удаления элемента
-			$arButtons = CIBlock::GetPanelButtons(
-			$arParams['IBLOCKS'],
-			0,
-			array("SECTION_BUTTONS"=>false, "SESSID"=>false)
-			);
-			$arItem["ADD_LINK"] = $arButtons["edit"]["add_element"]["ACTION_URL"];
-			$this->AddEditAction($arParams['IBLOCKS'], $arItem["ADD_LINK"], "Добавить салон", Array("ICON" => "bx-context-toolbar-create-icon",));
+			// $arButtons = CIBlock::GetPanelButtons(
+			// $arParams['IBLOCKS'],
+			// 0,
+			// array("SECTION_BUTTONS"=>false, "SESSID"=>false)
+			// );
+			// $arItem["ADD_LINK"] = $arButtons["edit"]["add_element"]["ACTION_URL"];
+			// $this->AddEditAction($arParams['IBLOCKS'], $arItem["ADD_LINK"], "Добавить салон", Array("ICON" => "bx-context-toolbar-create-icon",));
 
 		?>
 
