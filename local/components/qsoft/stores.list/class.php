@@ -52,6 +52,10 @@ class StoreList extends CBitrixComponent
 
 			);
 
+			if ($arParams['SHOW_MAP']) {
+		  		$arSelect[] = 'PROPERTY_MAP';
+		  		$arSelect[] = "SEARCHABLE_CONTENT";
+		  	}
 
 			//ORDER BY
 			$arSort = array(
@@ -65,133 +69,81 @@ class StoreList extends CBitrixComponent
 				"ACTIVE"=>"Y",
 			);
 
-
-
-
-
-
-			if ($arParams['SHOW_MAP']) {
-		  		$arSelect[] = 'PROPERTY_MAP';
-		  		$arSelect[] = "SEARCHABLE_CONTENT";
 			
 
-				//EXECUTE
-				$rsIBlockElement = CIBlockElement::GetList($arSort, $arFilter, false, false /*array("nTopCount" => $arParams['ELEMENTS_QUANTITY'])*/, $arSelect);
+			//EXECUTE
+			$rsIBlockElement = CIBlockElement::GetList($arSort, $arFilter, false, $arParams['ELEMENTS_QUANTITY'] ? array("nTopCount" => $arParams['ELEMENTS_QUANTITY']) : false, $arSelect);
 
-				?>
-
-
-				<?					//получаем ссылки для редактирования и удаления элемента
-					?>
+			?>
 
 
-
-				<?
-				$i = 0;
-				while ($item = $rsIBlockElement->GetNext(true, false))
-				{
-
-
-					$arButtons = CIBlock::GetPanelButtons(
-						$arParams['IBLOCKS'],
-						$item['ID'],
-						0,
-						array("SECTION_BUTTONS"=>false, "SESSID"=>false)
-					);	
-
-					$item["ADD_LINK"] = $arButtons["edit"]["add_element"]["ACTION_URL"];
-					$item["EDIT_LINK"] = $arButtons["edit"]["edit_element"]["ACTION_URL"];
-					$item["DELETE_LINK"] = $arButtons["edit"]["delete_element"]["ACTION_URL"];
-					
+			<?
+			$i = 0;
+			while ($item = $rsIBlockElement->GetNext(true, false))
+			{
 
 
+				$arButtons = CIBlock::GetPanelButtons(
+					$arParams['IBLOCKS'],
+					$item['ID'],
+					0,
+					array("SECTION_BUTTONS"=>false, "SESSID"=>false)
+				);	
 
+				if (!$arResult['ADD_LINK']) {
+					$arResult["ADD_LINK"] = $arButtons["edit"]["add_element"]["ACTION_URL"];
+				}
+				$item["EDIT_LINK"] = $arButtons["edit"]["edit_element"]["ACTION_URL"];
+				$item["DELETE_LINK"] = $arButtons["edit"]["delete_element"]["ACTION_URL"];
+				
+
+
+				if ($item['PROPERTY_MAP_VALUE']) {
 					list($lat, $lon) = explode(',', $item['PROPERTY_MAP_VALUE']);
 					$data[] = [
 						'LAT' => $lat,
 						'LON' => $lon,
 						'TEXT' => $item["PROPERTY_ADDRESS_VALUE"],
 					];
-					//$arResult[$item['ID']] = $item;
-					$arResult["ITEMS"][] = $item;
-					if ($item['PREVIEW_PICTURE']) {
-						//$imgIDs[] = $arResult[$item['ID']]["PREVIEW_PICTURE"];		
-						$imgIDs[] = $arResult["ITEMS"][$i]["PREVIEW_PICTURE"];		
-
-					}
-					$arResult["TEST_TEST_ADD_LINK"][] = $arButtons["edit"]["add_element"]["ACTION_URL"];
-					$arResult["TEST_TEST_EDIT_LINK"][] = $arButtons["edit"]["edit_element"]["ACTION_URL"];
-					$arResult["TEST_TEST_DELETE_LINK"][] = $arButtons["edit"]["delete_element"]["ACTION_URL"];
-					//$arResult[$i]['POSITION'] = $data;
-					$i++;
 				}
 
-				$arResult['POSITION'] = $data;
 
-				if (! empty($imgIDs)) {
-					$res = CFile::GetList($arSort, array('@ID' => $imgIDs));
-					while($res_arr = $res->GetNext())
-					{
-			    		$imgPath[$res_arr['ID']] = CFile::GetFileSRC($res_arr);
-					}
 
-					foreach ($arResult['ITEMS'] as $key => $item) {
+				//$arResult[$item['ID']] = $item;
+				$arResult["ITEMS"][] = $item;
+				if ($item['PREVIEW_PICTURE']) {
+					//$imgIDs[] = $arResult[$item['ID']]["PREVIEW_PICTURE"];		
+					$imgIDs[] = $arResult["ITEMS"][$i]["PREVIEW_PICTURE"];		
 
-								$arResult['ITEMS'][$key]['PICTURE']['SRC'] = $imgPath[$item['PREVIEW_PICTURE']];
-
-					}
 				}
 
-				$this->arResult = $arResult;		
-				$this->SetResultCacheKeys(array('POSITION',
-				));
-
-				//$this->setEditButtons();
-
-
-			} else {
-
-				//EXECUTE
-				$rsIBlockElement = CIBlockElement::GetList($arSort, $arFilter, false, array("nTopCount" => $arParams['ELEMENTS_QUANTITY']), $arSelect);
-
-				$i = 0;
-				while ($item = $rsIBlockElement->GetNext(true, false))
-				{
-
-
-					//$arResult[$item['ID']] = $item;
-					$arResult["ITEMS"][] = $item;
-					if ($item['PREVIEW_PICTURE']) {
-						//$imgIDs[] = $arResult[$item['ID']]["PREVIEW_PICTURE"];		
-						$imgIDs[] = $arResult["ITEMS"][$i]["PREVIEW_PICTURE"];		
-
-					}
-					$i++;
-				}
-
-				if (! empty($imgIDs)) {
-					$res = CFile::GetList($arSort, array('@ID' => $imgIDs));
-					while($res_arr = $res->GetNext())
-					{
-			    		$imgPath[$res_arr['ID']] = CFile::GetFileSRC($res_arr);
-					}
-
-					foreach ($arResult['ITEMS'] as $key => $item) {
-
-								$arResult['ITEMS'][$key]['PICTURE']['SRC'] = $imgPath[$item['PREVIEW_PICTURE']];
-
-					}
-				}
-
-				 $this->arResult = $arResult;
-
-
-
-				$this->SetResultCacheKeys(array(
-				));
-
-
+				$i++;
 			}
+
+			$arResult['POSITION'] = $data;
+
+
+			if (! empty($imgIDs)) {
+				$res = CFile::GetList($arSort, array('@ID' => $imgIDs));
+				while($res_arr = $res->GetNext())
+				{
+		    		$imgPath[$res_arr['ID']] = CFile::GetFileSRC($res_arr);
+				}
+
+				foreach ($arResult['ITEMS'] as $key => $item) {
+
+					$arResult['ITEMS'][$key]['PICTURE']['SRC'] = $imgPath[$item['PREVIEW_PICTURE']];
+
+				}
+			}
+
+
+
+
+
+			$this->arResult = $arResult;
+			$this->SetResultCacheKeys(array('POSITION',
+			));
 		
 	
 		}

@@ -34,7 +34,7 @@ $APPLICATION->SetTitle("Title");
 		"CACHE_TIME" => "3600",
 		"CACHE_TYPE" => "A",
 		"COMPONENT_TEMPLATE" => "stores_full",
-		"ELEMENTS_QUANTITY" => "2",
+		"ELEMENTS_QUANTITY" => "",
 		"IBLOCKS" => "5",
 		"IBLOCK_TYPE" => "salons",
 		"ORDER" => "DESC",
