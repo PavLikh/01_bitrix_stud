@@ -20,7 +20,7 @@ $APPLICATION->SetTitle("Тестовая");
 	"bitrix:system.auth.form",
 	"auth_form_header",
 	Array(
-		"COMPONENT_TEMPLATE" => "auth_form_header",
+		"AUTH_URL" => "/auth/",
 		"FORGOT_PASSWORD_URL" => "",
 		"PROFILE_URL" => "/personal/",
 		"REGISTER_URL" => "/auth/",
@@ -48,8 +48,11 @@ Array(
 	'ACTIVE_COMPONENT' => 'N'
 )
 );?></nav> </aside> </section>
-	<?$APPLICATION->IncludeComponent("bitrix:news.list", ".default", array(
-	"ACTIVE_DATE_FORMAT" => "d.M.Y",
+	<?$APPLICATION->IncludeComponent(
+	"bitrix:news.list",
+	".default",
+	Array(
+		"ACTIVE_DATE_FORMAT" => "d.M.Y",
 		"ADD_SECTIONS_CHAIN" => "Y",
 		"AJAX_MODE" => "N",
 		"AJAX_OPTION_ADDITIONAL" => "",
@@ -69,10 +72,7 @@ Array(
 		"DISPLAY_PICTURE" => "Y",
 		"DISPLAY_PREVIEW_TEXT" => "Y",
 		"DISPLAY_TOP_PAGER" => "N",
-		"FIELD_CODE" => array(
-			0 => "",
-			1 => "",
-		),
+		"FIELD_CODE" => array(0=>"",1=>"",),
 		"FILTER_NAME" => "",
 		"HIDE_LINK_WHEN_NO_DETAIL" => "N",
 		"IBLOCK_ID" => "1",
@@ -93,10 +93,7 @@ Array(
 		"PARENT_SECTION" => "",
 		"PARENT_SECTION_CODE" => "",
 		"PREVIEW_TRUNCATE_LEN" => "150",
-		"PROPERTY_CODE" => array(
-			0 => "AUTHOR_TEST",
-			1 => "",
-		),
+		"PROPERTY_CODE" => array(0=>"AUTHOR_TEST",1=>"",),
 		"SET_BROWSER_TITLE" => "N",
 		"SET_LAST_MODIFIED" => "N",
 		"SET_META_DESCRIPTION" => "Y",
@@ -110,34 +107,37 @@ Array(
 		"SORT_ORDER2" => "ASC",
 		"STRICT_SECTION_CHECK" => "N"
 	),
-	false,
-	array(
-	"ACTIVE_COMPONENT" => "N"
-	)
+false,
+Array(
+	'ACTIVE_COMPONENT' => 'N'
+)
 );?>
-<?$APPLICATION->IncludeComponent("mynamespace:photo.random", "my_template1", array(
-	"CACHE_GROUPS" => "Y",
+<?$APPLICATION->IncludeComponent(
+	"mynamespace:photo.random",
+	"my_template1",
+	Array(
+		"CACHE_GROUPS" => "Y",
 		"CACHE_TIME" => "180",
 		"CACHE_TYPE" => "A",
 		"COMPONENT_TEMPLATE" => "my_template1",
 		"DETAIL_URL" => "",
 		"IBLOCKS" => "",
-		"IBLOCK_ID" => array(
-			0 => "7",
-			1 => "8",
-		),
+		"IBLOCK_ID" => array(0=>"7",1=>"8",),
 		"IBLOCK_PROP" => "77",
 		"IBLOCK_TYPE" => "goods_and_utilities",
 		"IMG_HEIGHT" => "100",
 		"IMG_WIDTH" => "100",
 		"PARENT_SECTION" => ""
 	),
-	false,
-	array(
-	"ACTIVE_COMPONENT" => "N"
-	)
-);?><?$APPLICATION->IncludeComponent("qsoft:stores.list", "stores_short", array(
-	"CACHE_GROUPS" => "Y",
+false,
+Array(
+	'ACTIVE_COMPONENT' => 'N'
+)
+);?><?$APPLICATION->IncludeComponent(
+	"qsoft:stores.list",
+	"stores_short",
+	Array(
+		"CACHE_GROUPS" => "Y",
 		"CACHE_TIME" => "3600",
 		"CACHE_TYPE" => "A",
 		"COMPONENT_TEMPLATE" => "stores_short",
@@ -150,20 +150,23 @@ Array(
 		"SECTION_URL" => "/company/stores/",
 		"SORT_FIELD" => "RAND"
 	),
-	false,
-	array(
-	"ACTIVE_COMPONENT" => "Y"
-	)
-);?><?$APPLICATION->IncludeComponent("bitrix:breadcrumb", "breadcrumbs_qsoft", array(
-	"COMPONENT_TEMPLATE" => "breadcrumbs_qsoft",
+false,
+Array(
+	'ACTIVE_COMPONENT' => 'Y'
+)
+);?><?$APPLICATION->IncludeComponent(
+	"bitrix:breadcrumb",
+	"breadcrumbs_qsoft",
+	Array(
+		"COMPONENT_TEMPLATE" => "breadcrumbs_qsoft",
 		"PATH" => "",
 		"SITE_ID" => "s1",
 		"START_FROM" => "0"
 	),
-	false,
-	array(
-	"ACTIVE_COMPONENT" => "N"
-	)
+false,
+Array(
+	'ACTIVE_COMPONENT' => 'N'
+)
 );?>
 <?// echo $_SERVER["DOCUMENT_ROOT"]."/local/php_interface/include/logifle.log"; ?>
 <?// echo '<br>' . SITE_TEMPLATE_PATH; ?>
@@ -178,19 +181,16 @@ if(file_exists($_SERVER["DOCUMENT_ROOT"]."/local/php_interface/include/logifle.l
 
 
 ?><?$APPLICATION->IncludeComponent(
-	"mynamespace:last.event", 
-	".default", 
-	array(
+	"mynamespace:last.event",
+	".default",
+	Array(
 		"CACHE_GROUPS" => "N",
 		"CACHE_TIME" => "180",
 		"CACHE_TYPE" => "A",
+		"COMPONENT_TEMPLATE" => ".default",
 		"DETAIL_URL" => "",
-		"IBLOCK_ID" => array(
-			0 => "7",
-		),
+		"IBLOCK_ID" => array(0=>"7",),
 		"IBLOCK_TYPE" => "goods_and_utilities",
-		"PARENT_SECTION" => "",
-		"COMPONENT_TEMPLATE" => ".default"
-	),
-	false
+		"PARENT_SECTION" => ""
+	)
 );?><?require($_SERVER["DOCUMENT_ROOT"]."/bitrix/footer.php");?>

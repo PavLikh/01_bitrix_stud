@@ -22,17 +22,17 @@ else:
 ?>
 
 
-					<nav class="top_menu grey inline-block authorize">
-						<span><?=GetMessage("AUTH_USER_HELLO")?></span>
-						<a href="<?=$arParams['USER_PROFILE_LINK'];?>"><b class="user_name"><?=$arResult["USER_NAME"]?></b></a>
-						<a href="<?=$arParams["PROFILE_URL"]?>"><?=GetMessage("AUTH_PROFILE")?></a>
-						<a class="logout" href="<?echo $APPLICATION->GetCurPageParam("logout=yes", array(
-				     "login",
-				     "logout",
-				     "register",
-				     "forgot_password",
-				     "change_password"));?>"><?=\Bitrix\Main\Localization\Loc::getMessage("AUTH_LOGOUT_BUTTON")?></a>
-					</nav>
+	<nav class="top_menu grey inline-block authorize">
+		<span><?=GetMessage("AUTH_USER_HELLO")?></span>
+		<a href="<?=$arParams['USER_PROFILE_LINK'];?>"><b class="user_name"><?=$arResult["USER_NAME"]?></b></a>
+		<a href="<?=$arParams["PROFILE_URL"]?>"><?=GetMessage("AUTH_PROFILE")?></a>
+		<a class="logout" href="<?echo $APPLICATION->GetCurPageParam("logout=yes", array(
+		     "login",
+		     "logout",
+		     "register",
+		     "forgot_password",
+		     "change_password"));?>"><?=\Bitrix\Main\Localization\Loc::getMessage("AUTH_LOGOUT_BUTTON")?></a>
+	</nav>
 
 <?endif?>
 <!-- </div> -->
