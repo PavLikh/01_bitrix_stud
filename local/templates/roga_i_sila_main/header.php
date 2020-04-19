@@ -51,19 +51,19 @@
 
  					<?
  					$APPLICATION->IncludeComponent(
-	"bitrix:system.auth.form", 
-	"auth_form_header", 
-	array(
-		"FORGOT_PASSWORD_URL" => "",
-		"PROFILE_URL" => "/personal/",
-		"REGISTER_URL" => "/auth/",
-		"SHOW_ERRORS" => "N",
-		"COMPONENT_TEMPLATE" => "auth_form_header",
-		"USER_PROFILE_LINK" => "/personal/profile/",
-		"AUTH_URL" => "/auth/"
-	),
-	false
-);
+						"bitrix:system.auth.form", 
+						"auth_form_header", 
+						array(
+							"FORGOT_PASSWORD_URL" => "",
+							"PROFILE_URL" => "/personal/",
+							"REGISTER_URL" => "/auth/",
+							"SHOW_ERRORS" => "N",
+							"COMPONENT_TEMPLATE" => "auth_form_header",
+							"USER_PROFILE_LINK" => "/personal/profile/",
+							"AUTH_URL" => "/auth/"
+						),
+						false
+					);
 					?>
 
 

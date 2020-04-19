@@ -568,11 +568,11 @@ body
 {
 	float: left;
 	width: 325px;
-	margin-left: 15px;
+	/*margin-left: 15px;*/  /*убрал отступ*/
 }
 .shops_block_item:first-child
 {
-	margin-left: 0;
+	margin-left: 0;	
 }
 .content_area .shops_block_item img,  .shops_block_item img
 {

@@ -6,7 +6,11 @@ $userName = CUser::GetFullName();
 if (!$userName)
 	$userName = CUser::GetLogin();
 ?>
-
+<script>
+	<?if (isset($_REQUEST["backurl"]) && strlen($_REQUEST["backurl"])>0 && preg_match('#^/\w#', $_REQUEST["backurl"])):?>
+	document.location.href = "<?=CUtil::JSEscape($_REQUEST["backurl"])?>";
+	<?endif?>
+</script>
 
 <?
 $APPLICATION->SetTitle("Авторизация");

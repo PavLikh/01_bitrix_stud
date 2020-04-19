@@ -1,46 +1,153 @@
 <?if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
 
-class CDemoSqr extends CBitrixComponent
+class StoreList extends CBitrixComponent
 {
-//     //Родительский метод проходит по всем параметрам переданным в $APPLICATION->IncludeComponent
-//     //и применяет к ним функцию htmlspecialcharsex. В данном случае такая обработка избыточна.
-//     //Переопределяем.
-//     public function onPrepareComponentParams($arParams)
-//     {
-//         $result = array(
-//             "CACHE_TYPE" => $arParams["CACHE_TYPE"],
-//             "CACHE_TIME" => isset($arParams["CACHE_TIME"]) ?$arParams["CACHE_TIME"]: 36000000,
-//             "X" => intval($arParams["X"]),
-//         );
-//         return $result;
-//     }
+	public function onPrepareComponentParams($arParams)
+	{
+		if(!isset($arParams["CACHE_TIME"]))
+			$arParams["CACHE_TIME"] = 3600;
 
-//     public function sqr($x)
-//     {
-//         return $x * $x;
-//     }
+		if(!is_array($arParams["IBLOCKS"]))
+			$arParams["IBLOCKS"] = intval($arParams["IBLOCKS"]);
+		
+		return $arParams;
+	}
 
-    protected function setEditButtons()
-    {
-        global $APPLICATION; // так и не избавились от глобальных переменных
+	public function executeComponent()
+	{
+		$this->checkModules();
+		$this->getResult();
+		$this->IncludeComponentTemplate();
+		
+	}
 
-        if (!$APPLICATION->GetShowIncludeAreas() || $this->showEditButtons === false)
-        {
-            return false;
-        }
 
-        $arButtons = \CIBlock::GetPanelButtons(
-            $this->arParams['IBLOCK_ID'],
-            $this->arResult['ID'],
-            $this->arParams['SECTION_ID'],
-            array("SECTION_BUTTONS"=>false, "SESSID"=>false)
-        );
+	protected function checkModules()
+	{
+		if(!CModule::IncludeModule("iblock")) {
+			$this->AbortResultCache();
+			ShowError(Loc::getMessage("IBLOCK_MODULE_NOT_INSTALLED"));
+			return;
+		}
+	}
 
-        $APPLICATION->SetEditArea(
-            $this->getEditAreaId($this->arResult['ID']),
-            \CIBlock::GetComponentMenu("configure",$arButtons));
-       
-    }
+
+	protected function getResult()
+	{
+		if($this->StartResultCache($this->arParams["CACHE_TIME"])) {
+	
+
+			$arParams = $this->arParams;
+			$arResult = $this->arResult;
+
+			//SELECT
+			$arSelect = array(
+				"ID",
+				"IBLOCK_ID",
+				"CODE",
+				"PREVIEW_PICTURE",
+				"PROPERTY_WORK_HOURS",
+				"PROPERTY_PHONE",
+				"PROPERTY_ADDRESS",
+
+			);
+
+			if ($arParams['SHOW_MAP']) {
+		  		$arSelect[] = 'PROPERTY_MAP';
+		  		$arSelect[] = "SEARCHABLE_CONTENT";
+		  	}
+
+			//ORDER BY
+			$arSort = array(
+				$arParams['SORT_FIELD'] => $arParams['ORDER'],
+			);
+
+			//WHERE
+			$arFilter = array(
+				"IBLOCK_ID" => $arParams["IBLOCKS"],
+				"ACTIVE_DATE" => "Y",
+				"ACTIVE"=>"Y",
+			);
+
+			
+
+			//EXECUTE
+			$rsIBlockElement = CIBlockElement::GetList($arSort, $arFilter, false, $arParams['ELEMENTS_QUANTITY'] ? array("nTopCount" => $arParams['ELEMENTS_QUANTITY']) : false, $arSelect);
+
+			?>
+
+
+			<?
+			$i = 0;
+			while ($item = $rsIBlockElement->GetNext(true, false))
+			{
+
+
+				$arButtons = CIBlock::GetPanelButtons(
+					$arParams['IBLOCKS'],
+					$item['ID'],
+					0,
+					array("SECTION_BUTTONS"=>false, "SESSID"=>false)
+				);	
+
+				if (!$arResult['ADD_LINK']) {
+					$arResult["ADD_LINK"] = $arButtons["edit"]["add_element"]["ACTION_URL"];
+				}
+				$item["EDIT_LINK"] = $arButtons["edit"]["edit_element"]["ACTION_URL"];
+				$item["DELETE_LINK"] = $arButtons["edit"]["delete_element"]["ACTION_URL"];
+				
+
+
+				if ($item['PROPERTY_MAP_VALUE']) {
+					list($lat, $lon) = explode(',', $item['PROPERTY_MAP_VALUE']);
+					$data[] = [
+						'LAT' => $lat,
+						'LON' => $lon,
+						'TEXT' => $item["PROPERTY_ADDRESS_VALUE"],
+					];
+				}
+
+
+
+				//$arResult[$item['ID']] = $item;
+				$arResult["ITEMS"][] = $item;
+				if ($item['PREVIEW_PICTURE']) {
+					//$imgIDs[] = $arResult[$item['ID']]["PREVIEW_PICTURE"];		
+					$imgIDs[] = $arResult["ITEMS"][$i]["PREVIEW_PICTURE"];		
+
+				}
+
+				$i++;
+			}
+
+			$arResult['POSITION'] = $data;
+
+
+			if (! empty($imgIDs)) {
+				$res = CFile::GetList($arSort, array('@ID' => $imgIDs));
+				while($res_arr = $res->GetNext())
+				{
+		    		$imgPath[$res_arr['ID']] = CFile::GetFileSRC($res_arr);
+				}
+
+				foreach ($arResult['ITEMS'] as $key => $item) {
+
+					$arResult['ITEMS'][$key]['PICTURE']['SRC'] = $imgPath[$item['PREVIEW_PICTURE']];
+
+				}
+			}
+
+
+
+
+
+			$this->arResult = $arResult;
+			$this->SetResultCacheKeys(array('POSITION',
+			));
+		
+	
+		}
+	}
 
 
 }?>
