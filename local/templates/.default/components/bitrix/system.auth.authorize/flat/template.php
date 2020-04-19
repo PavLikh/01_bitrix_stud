@@ -77,7 +77,7 @@ $APPLICATION->IncludeComponent("bitrix:socserv.auth.form",
 document.getElementById('bx_auth_secure').style.display = '';
 </script>
 <?endif?>
-				<input type="password" name="USER_PASSWORD" maxlength="255" autocomplete="off" />
+				<input type="password" name="USER_PASSWORD" maxlength="255" autocomplete="off" placeholder="********" />
 			</div>
 		</div>
 
